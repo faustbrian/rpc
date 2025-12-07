@@ -1,0 +1,18 @@
+{
+    "code": -32602,
+    "message": "Invalid params",
+    "data": [
+        {
+            "status": "422",
+            "source": {
+                "pointer": "\/params\/sorts"
+            },
+            "title": "Invalid sorts",
+            "detail": "Requested sorts `sort1` is not allowed. Allowed sorts are `sort2, sort3`.",
+            "meta": {
+                "unknown": "sort1",
+                "allowed": "sort2, sort3"
+            }
+        }
+    ]
+}

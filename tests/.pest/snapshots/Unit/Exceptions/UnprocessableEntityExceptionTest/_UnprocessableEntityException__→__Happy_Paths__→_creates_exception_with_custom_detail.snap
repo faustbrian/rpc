@@ -1,0 +1,11 @@
+{
+    "code": -32000,
+    "message": "Server error",
+    "data": [
+        {
+            "status": "422",
+            "title": "Unprocessable Entity",
+            "detail": "Email format is invalid"
+        }
+    ]
+}

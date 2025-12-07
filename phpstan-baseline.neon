@@ -1,0 +1,781 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined method GuzzleHttp\\Promise\\PromiseInterface\|Illuminate\\Http\\Client\\Response\:\:body\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Clients/Client.php
+
+		-
+			message: '#^Method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:getErrorCode\(\) should return int but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Exceptions/AbstractRequestException.php
+
+		-
+			message: '#^Method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:toArray\(\) should return array\<string, mixed\> but returns array\<mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Exceptions/AbstractRequestException.php
+
+		-
+			message: '#^Trait Cline\\RPC\\Exceptions\\Concerns\\RendersThrowable is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Exceptions/Concerns/RendersThrowable.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ForbiddenException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InternalErrorException.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Exceptions/InvalidDataException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, list\<array\<string, mixed\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidDataException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, array\<string, string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidFieldsException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, array\<string, string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidFiltersException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, mixed\>\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidParamsException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, array\<string, array\|string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidRelationshipsException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, array\<string, string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/InvalidSortsException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, array\<string, string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/JsonSchemaException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, mixed\>\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/MethodNotFoundException.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Exceptions/ParameterValidationException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, list\<array\<string, mixed\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ParameterValidationException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int\|string, mixed\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ParseErrorException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, list\<array\<string, array\<string, string\>\|string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/RequestValidationFailedException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ResourceNotFoundException.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Exceptions/SemanticValidationException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/SemanticValidationException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, list\<array\<string, mixed\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/SemanticValidationException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int\|string, mixed\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ServerErrorException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int\|string, mixed\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ServerNotFoundException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/ServiceUnavailableException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, mixed\>\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/StructurallyInvalidRequestException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/TooManyRequestsException.php
+
+		-
+			message: '#^Parameter \#3 \$data of static method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:new\(\) expects array\<string, mixed\>\|null, array\<int, array\<string, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Exceptions/UnauthorizedException.php
+
+		-
+			message: '#^Method Cline\\RPC\\Http\\Middleware\\BootServer\:\:handle\(\) should return Symfony\\Component\\HttpFoundation\\Response but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Http/Middleware/BootServer.php
+
+		-
+			message: '#^Using nullsafe method call on non\-nullable type Illuminate\\Routing\\Route\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: src/Http/Middleware/BootServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Jobs\\CallMethod\:\:handle\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Jobs/CallMethod.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$result has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Jobs/CallMethod.php
+
+		-
+			message: '#^Parameter \#1 \$payload of callable passed to call_user_func\(\) expects array\|Illuminate\\Contracts\\Support\\Arrayable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Jobs/CallMethod.php
+
+		-
+			message: '#^Parameter \#2 \$params of method Cline\\RPC\\Jobs\\CallMethod\:\:resolveParameters\(\) expects array\<string, mixed\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Jobs/CallMethod.php
+
+		-
+			message: '#^Cannot cast object\|string to string\.$#'
+			identifier: cast.string
+			count: 114
+			path: src/JsonSchema/RuleTransformer.php
+
+		-
+			message: '#^Parameter \#1 \$haystack of function str_starts_with expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 60
+			path: src/JsonSchema/RuleTransformer.php
+
+		-
+			message: '#^Parameter \#1 \$string of function mb_substr expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 54
+			path: src/JsonSchema/RuleTransformer.php
+
+		-
+			message: '#^Parameter \#1 \$rules of static method Cline\\RPC\\JsonSchema\\RulesTransformer\:\:transform\(\) expects array\<string, array\<int, object\|string\>\|string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/JsonSchema/RulesTransformer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractListMethod\:\:getParams\(\) has invalid return type Cline\\OpenRpc\\ContentDescriptor\\ContentDescriptorInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractListMethod\:\:getParams\(\) should return array\<int, Cline\\OpenRpc\\ContentDescriptor\\ContentDescriptorInterface\> but returns array\<int, array\<string, array\<string, array\<string, array\<string, array\<string, array\<int\|string, string\>\|string\>\|string\>\>\|string\>\|string\>\|null\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Parameter \#1 \$fields of static method Cline\\OpenRpc\\ContentDescriptor\\FieldsContentDescriptor\:\:create\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Parameter \#1 \$filters of static method Cline\\OpenRpc\\ContentDescriptor\\FiltersContentDescriptor\:\:create\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Parameter \#1 \$relationships of static method Cline\\OpenRpc\\ContentDescriptor\\RelationshipsContentDescriptor\:\:create\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Parameter \#1 \$sorts of static method Cline\\OpenRpc\\ContentDescriptor\\SortsContentDescriptor\:\:create\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Methods/AbstractListMethod.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Contracts\\Auth\\Factory\:\:check\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Contracts\\Auth\\Factory\:\:user\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Call to an undefined static method Cline\\RPC\\Contracts\\ResourceInterface\:\:query\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractMethod\:\:cursorPaginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractMethod\:\:getParams\(\) has invalid return type Cline\\OpenRpc\\ContentDescriptor\\ContentDescriptorInterface\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractMethod\:\:paginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractMethod\:\:query\(\) should return Cline\\RPC\\QueryBuilders\\QueryBuilder but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\AbstractMethod\:\:simplePaginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Parameter \#1 \$boolean of function abort_unless expects bool, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Methods/AbstractMethod.php
+
+		-
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Methods/DiscoverMethod.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Methods/DiscoverMethod.php
+
+		-
+			message: '#^Method Cline\\RPC\\Methods\\DiscoverMethod\:\:handle\(\) should return array\<string, mixed\> but returns array\<mixed, mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Methods/DiscoverMethod.php
+
+		-
+			message: '#^Cannot call method register\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Mixins/RouteMixin.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Normalizers/ModelNormalizer.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Normalizers/ModelNormalizer.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Normalizers/ModelNormalizer.php
+
+		-
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
+			count: 1
+			path: src/Normalizers/ResourceNormalizer.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Normalizers/ResourceNormalizer.php
+
+		-
+			message: '#^Cannot access offset string on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Normalizers/ResourceNormalizer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Protocols\\JsonRpcProtocol\:\:decodeRequest\(\) should return array\<string, mixed\> but returns array\<mixed, mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Protocols/JsonRpcProtocol.php
+
+		-
+			message: '#^Method Cline\\RPC\\Protocols\\JsonRpcProtocol\:\:decodeResponse\(\) should return array\<string, mixed\> but returns array\<mixed, mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Protocols/JsonRpcProtocol.php
+
+		-
+			message: '#^Call to function array_key_exists\(\) with ''fault'' and non\-empty\-array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 6
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<mixed, mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 4
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Call to function is_array\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Cannot cast mixed to float\.$#'
+			identifier: cast.double
+			count: 1
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Protocols/XmlRpcProtocol.php
+
+		-
+			message: '#^Cannot call static method query\(\) on mixed\.$#'
+			identifier: staticMethod.nonObject
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:applyFilter\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:applyFilter\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Relations\\Relation but does not specify its types\: TRelatedModel, TDeclaringModel, TResult$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:applyFilter\(\) return type with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:applyFilter\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\Relation does not specify its types\: TRelatedModel, TDeclaringModel, TResult$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Offset ''attribute'' on array\{attribute\: string, operator\: string, value\: mixed, boolean\?\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 2
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Offset ''operator'' on array\{attribute\: string, operator\: string, value\: mixed, boolean\?\: string\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^PHPDoc tag @mixin contains generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Parameter \#1 \$query of method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:applyFilter\(\) expects Cline\\RPC\\QueryBuilders\\QueryBuilder\|Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Eloquent\\Relations\\Relation, Cline\\RPC\\QueryBuilders\\QueryBuilder\|\(Closure\)\|Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Eloquent\\Relations\\Relation given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Parameter \#2 \$allowedFilters of static method Cline\\RPC\\Exceptions\\InvalidFiltersException\:\:create\(\) expects array\<int, string\>, array\<string, array\<int, string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Parameter \#2 \$callback of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:whereHas\(\) expects \(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: mixed\)\|null, Cline\\RPC\\QueryBuilders\\QueryBuilder\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Eloquent\\Relations\\Relation\)\: \(Cline\\RPC\\QueryBuilders\\QueryBuilder\|Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Eloquent\\Relations\\Relation\)\)\|Illuminate\\Database\\Eloquent\\Builder\|Illuminate\\Database\\Eloquent\\Relations\\Relation given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Parameter \#2 \$values of method Illuminate\\Database\\Query\\Builder\:\:whereBetween\(\) expects iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Parameter \#2 \$values of method Illuminate\\Database\\Query\\Builder\:\:whereNotBetween\(\) expects iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$model \(class\-string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$model is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$modelTable \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$modelTable is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$modelType \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$modelType is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$resource is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$subject \(Illuminate\\Database\\Eloquent\\Builder\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Property Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:\$subject with generic class Illuminate\\Database\\Eloquent\\Builder does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/QueryBuilders/QueryBuilder.php
+
+		-
+			message: '#^Static property Cline\\RPC\\Repositories\\ResourceRepository\:\:\$resources \(array\<class\-string, class\-string\<Cline\\RPC\\Contracts\\ResourceInterface\>\>\) does not accept array\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Repositories/ResourceRepository.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: src/Repositories/ResourceRepository.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$responses contains generic class Illuminate\\Support\\Collection but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Requests/RequestHandler.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Resources/AbstractDataResource.php
+
+		-
+			message: '#^Cannot call method getTable\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Method Cline\\RPC\\Resources\\AbstractModelResource\:\:getAttributes\(\) should return array\<string, mixed\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Method Cline\\RPC\\Resources\\AbstractModelResource\:\:getModelTable\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Method Cline\\RPC\\Resources\\AbstractModelResource\:\:getRelations\(\) should return array\<string, mixed\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$allowedFilters of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$allowedRelationships of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$allowedSorts of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, string\>\>, array\<int, string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$requestFields of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, string\>\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$requestFilters of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, array\{attribute\: string, operator\: string, value\: mixed, boolean\?\: string\}\>\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$requestRelationships of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, string\>\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Parameter \$requestSorts of static method Cline\\RPC\\QueryBuilders\\QueryBuilder\:\:for\(\) expects array\<string, array\<int, array\{attribute\: string, direction\: string\}\>\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Resources/AbstractModelResource.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Servers/AbstractServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Servers\\AbstractServer\:\:getContentDescriptors\(\) should return array\<int, object\> but returns array\<int, array\<string, array\<string, string\>\|string\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Servers/AbstractServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Servers\\AbstractServer\:\:getSchemas\(\) should return array\<int, object\> but returns array\<int, array\<string, array\<string, array\<int\|string, array\<string, string\>\|string\>\|string\>\|string\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Servers/AbstractServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Servers\\ConfigurationServer\:\:getContentDescriptors\(\) should return array\<int, object\> but returns array\<int, mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Servers/ConfigurationServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Servers\\ConfigurationServer\:\:getMiddleware\(\) should return array\<int, class\-string\> but returns array\<int, string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Servers/ConfigurationServer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Servers\\ConfigurationServer\:\:getSchemas\(\) should return array\<int, object\> but returns array\<int, mixed\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Servers/ConfigurationServer.php
+
+		-
+			message: '#^Call to function assert\(\) with true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/ServiceProvider.php
+
+		-
+			message: '#^Instanceof between Cline\\RPC\\Contracts\\ProtocolInterface and Cline\\RPC\\Contracts\\ProtocolInterface will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/ServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$model of static method Cline\\RPC\\Repositories\\ResourceRepository\:\:register\(\) expects class\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ServiceProvider.php
+
+		-
+			message: '#^Parameter \#2 \$resource of static method Cline\\RPC\\Repositories\\ResourceRepository\:\:register\(\) expects class\-string\<Cline\\RPC\\Contracts\\ResourceInterface\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ServiceProvider.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 5
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Transformers\\Transformer\:\:cursorPaginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Transformers\\Transformer\:\:paginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Method Cline\\RPC\\Transformers\\Transformer\:\:simplePaginate\(\) has parameter \$query with generic class Illuminate\\Database\\Eloquent\\Builder but does not specify its types\: TModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$paginator contains generic class Illuminate\\Pagination\\CursorPaginator but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$paginator contains generic class Illuminate\\Pagination\\LengthAwarePaginator but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^PHPDoc tag @var for variable \$paginator contains generic class Illuminate\\Pagination\\Paginator but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Parameter \#1 \$collection of method Cline\\RPC\\Transformers\\Transformer\:\:collection\(\) expects Illuminate\\Support\\Collection\<int, Cline\\RPC\\Contracts\\ResourceInterface\|Illuminate\\Database\\Eloquent\\Model\>, Illuminate\\Support\\Collection\<\(int\|string\), mixed\> given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Transformers/Transformer.php
+
+		-
+			message: '#^Function Cline\\RPC\\post_json_rpc\(\) return type with generic class Illuminate\\Testing\\TestResponse does not specify its types\: TResponse$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/functions.php

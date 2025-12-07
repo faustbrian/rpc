@@ -1,0 +1,35 @@
+[
+  {
+    "jsonrpc": "2.0",
+    "method": "app.sum",
+    "params": {
+      "data": [1, 2, 4]
+    },
+    "id": "1"
+  },
+  {
+    "jsonrpc": "2.0",
+    "method": "app.notify_hello",
+    "params": {
+      "data": [7]
+    }
+  },
+  {
+    "jsonrpc": "2.0",
+    "method": "app.subtract",
+    "params": {
+      "data": [42, 23]
+    },
+    "id": "2"
+  },
+  { "foo": "boo" },
+  {
+    "jsonrpc": "2.0",
+    "method": "app.foo.get",
+    "params": {
+      "data": { "name": "myself" }
+    },
+    "id": "5"
+  },
+  { "jsonrpc": "2.0", "method": "app.get_data", "id": "9" }
+]

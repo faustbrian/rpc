@@ -1,0 +1,11 @@
+{
+    "code": -32603,
+    "message": "Internal error",
+    "data": [
+        {
+            "status": "500",
+            "title": "Internal error",
+            "detail": "Test error"
+        }
+    ]
+}
