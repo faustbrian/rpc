@@ -1,0 +1,9 @@
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "id": 42,
+    "name": "Test Item",
+    "email": "test@example.com"
+  },
+  "id": 101
+}

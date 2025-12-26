@@ -1,0 +1,14 @@
+{
+    "code": -32602,
+    "message": "Invalid params",
+    "data": [
+        {
+            "status": "422",
+            "source": {
+                "pointer": "\/params\/data\/field"
+            },
+            "title": "Invalid params",
+            "detail": "The field is required."
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "code": -32000,
+    "message": "Server error",
+    "data": [
+        {
+            "status": "401",
+            "title": "Unauthorized",
+            "detail": "You are not authorized to perform this action."
+        }
+    ]
+}

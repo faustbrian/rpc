@@ -1,0 +1,18 @@
+{
+    "type": "user",
+    "id": "1",
+    "attributes": {
+        "name": "John"
+    },
+    "relationships": {
+        "posts": [
+            {
+                "type": "post",
+                "id": "1",
+                "attributes": {
+                    "name": "John"
+                }
+            }
+        ]
+    }
+}

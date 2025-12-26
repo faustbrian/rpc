@@ -1,0 +1,14 @@
+{
+    "code": -32603,
+    "message": "Internal error",
+    "data": [
+        {
+            "status": "418",
+            "source": {
+                "pointer": "\/"
+            },
+            "title": "Invalid JSON Schema",
+            "detail": "The 'customRule' rule is not supported."
+        }
+    ]
+}

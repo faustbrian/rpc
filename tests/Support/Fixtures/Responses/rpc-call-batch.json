@@ -1,0 +1,36 @@
+[
+  { "jsonrpc": "2.0", "result": 7, "id": "1" },
+  { "jsonrpc": "2.0", "result": 19, "id": "2" },
+  {
+    "jsonrpc": "2.0",
+    "id": null,
+    "error": {
+      "code": -32600,
+      "message": "Invalid Request",
+      "data": [
+        {
+          "status": "422",
+          "source": {
+            "pointer": "/jsonrpc"
+          },
+          "title": "Invalid member",
+          "detail": "The jsonrpc field is required."
+        },
+        {
+          "status": "422",
+          "source": {
+            "pointer": "/method"
+          },
+          "title": "Invalid member",
+          "detail": "The method field is required."
+        }
+      ]
+    }
+  },
+  {
+    "jsonrpc": "2.0",
+    "error": { "code": -32601, "message": "Method not found" },
+    "id": "5"
+  },
+  { "jsonrpc": "2.0", "result": ["hello", 5], "id": "9" }
+]

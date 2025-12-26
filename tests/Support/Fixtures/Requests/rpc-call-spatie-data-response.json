@@ -1,0 +1,5 @@
+{
+  "jsonrpc": "2.0",
+  "method": "app.get_spatie_data",
+  "id": 101
+}

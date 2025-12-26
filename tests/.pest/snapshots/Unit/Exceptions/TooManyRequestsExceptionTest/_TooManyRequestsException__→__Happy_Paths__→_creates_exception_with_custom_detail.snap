@@ -1,0 +1,11 @@
+{
+    "code": -32000,
+    "message": "Server error",
+    "data": [
+        {
+            "status": "429",
+            "title": "Too Many Requests",
+            "detail": "Rate limit: 100 requests per minute"
+        }
+    ]
+}
