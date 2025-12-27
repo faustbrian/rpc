@@ -1,8 +1,3 @@
----
-title: Getting Started
-description: Learn how to build JSON-RPC 2.0 and XML-RPC APIs with Laravel integration
----
-
 ## Installation
 
 Install via Composer:

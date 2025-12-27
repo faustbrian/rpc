@@ -1,8 +1,3 @@
----
-title: Servers
-description: Create and configure JSON-RPC servers with custom routes, middleware, and OpenRPC schemas
----
-
 ## Creating a Server
 
 ### Basic Server

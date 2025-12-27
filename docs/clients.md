@@ -1,8 +1,3 @@
----
-title: Clients
-description: Build type-safe RPC clients with fluent APIs for single and batch requests
----
-
 ## Creating a Client
 
 ### JSON-RPC Client

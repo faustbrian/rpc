@@ -1,8 +1,3 @@
----
-title: Testing
-description: Test JSON-RPC endpoints with Pest helper functions and assertions
----
-
 ## Testing RPC Endpoints
 
 ### Using post_json_rpc()

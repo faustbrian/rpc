@@ -1,8 +1,3 @@
----
-title: Methods
-description: Build RPC methods with validation, authentication, resources, and OpenRPC documentation
----
-
 ## Creating a Method
 
 ### Basic Method
