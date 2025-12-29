@@ -54,6 +54,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docker development environment
 - GitHub Actions CI/CD workflow
 
-[Unreleased]: https://github.com/faustbrian/rpc/compare/2.0.0...HEAD
-[2.0.0]: https://github.com/faustbrian/rpc/compare/1.0.0...2.0.0
-[1.0.0]: https://github.com/faustbrian/rpc/releases/tag/1.0.0
+[Unreleased]: https://git.cline.sh/faustbrian/rpc/compare/2.0.0...HEAD
+[2.0.0]: https://git.cline.sh/faustbrian/rpc/compare/1.0.0...2.0.0
+[1.0.0]: https://git.cline.sh/faustbrian/rpc/releases/tag/1.0.0
