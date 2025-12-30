@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Call to an undefined method GuzzleHttp\\Promise\\PromiseInterface\|Illuminate\\Http\\Client\\Response\:\:body\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: src/Clients/Client.php
-
-		-
 			message: '#^Method Cline\\RPC\\Exceptions\\AbstractRequestException\:\:getErrorCode\(\) should return int but returns mixed\.$#'
 			identifier: return.type
 			count: 1
