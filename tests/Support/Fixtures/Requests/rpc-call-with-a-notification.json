@@ -1,0 +1,7 @@
+{
+  "jsonrpc": "2.0",
+  "method": "app.subtract",
+  "params": {
+    "data": [23, 42]
+  }
+}

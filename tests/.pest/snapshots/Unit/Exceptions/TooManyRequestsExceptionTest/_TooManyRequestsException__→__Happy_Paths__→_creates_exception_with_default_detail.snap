@@ -1,0 +1,11 @@
+{
+    "code": -32000,
+    "message": "Server error",
+    "data": [
+        {
+            "status": "429",
+            "title": "Too Many Requests",
+            "detail": "The server is refusing to service the request because the rate limit has been exceeded. Please wait and try again later."
+        }
+    ]
+}
