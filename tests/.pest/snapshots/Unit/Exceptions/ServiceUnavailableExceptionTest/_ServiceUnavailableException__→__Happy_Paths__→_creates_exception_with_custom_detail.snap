@@ -1,0 +1,11 @@
+{
+    "code": -32000,
+    "message": "Server error",
+    "data": [
+        {
+            "status": "503",
+            "title": "Service Unavailable",
+            "detail": "Database maintenance in progress"
+        }
+    ]
+}
