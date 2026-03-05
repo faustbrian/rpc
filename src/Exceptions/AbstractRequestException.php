@@ -11,6 +11,9 @@ namespace Cline\RPC\Exceptions;
 
 use Cline\RPC\Data\ErrorData;
 use Exception;
+use Facade\IgnitionContracts\BaseSolution;
+use Facade\IgnitionContracts\ProvidesSolution;
+use Facade\IgnitionContracts\Solution;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 
@@ -26,7 +29,7 @@ use function array_filter;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-abstract class AbstractRequestException extends Exception implements RpcException
+abstract class AbstractRequestException extends Exception implements ProvidesSolution, RpcException
 {
     /**
      * Create a new request exception instance.
@@ -149,6 +152,18 @@ abstract class AbstractRequestException extends Exception implements RpcExceptio
         }
 
         return array_filter($message);
+    }
+
+    public function getSolution(): Solution
+    {
+        /** @var BaseSolution $solution */
+        $solution = BaseSolution::create('Review package usage and configuration.');
+
+        return $solution
+            ->setSolutionDescription('Exception: '.$this->getMessage())
+            ->setDocumentationLinks([
+                'Package documentation' => 'https://github.com/cline/rpc',
+            ]);
     }
 
     /**
