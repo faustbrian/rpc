@@ -1,10 +1,10 @@
 ## Table of Contents
 
-1. [Getting Started](#doc-docs-readme) (`docs/README.md`)
-2. [Servers](#doc-docs-servers) (`docs/servers.md`)
-3. [Methods](#doc-docs-methods) (`docs/methods.md`)
-4. [Clients](#doc-docs-clients) (`docs/clients.md`)
-5. [Testing](#doc-docs-testing) (`docs/testing.md`)
+1. [Getting Started](#doc-docs-readme)
+2. [Servers](#doc-docs-servers)
+3. [Methods](#doc-docs-methods)
+4. [Clients](#doc-docs-clients)
+5. [Testing](#doc-docs-testing)
 <a id="doc-docs-readme"></a>
 
 ## Installation
