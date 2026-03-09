@@ -19,10 +19,10 @@ composer require cline/rpc
 
 ## Documentation
 
-- **[Getting Started](cookbook/getting-started.md)** - Installation, configuration, and first RPC server
-- **[Servers](cookbook/servers.md)** - Creating and configuring JSON-RPC servers
-- **[Methods](cookbook/methods.md)** - Implementing RPC methods with validation and resources
-- **[Clients](cookbook/clients.md)** - Building type-safe RPC clients with Saloon
+- **[Getting Started](DOCS.md#doc-docs-readme)** - Installation, configuration, and first RPC server
+- **[Servers](DOCS.md#doc-docs-servers)** - Creating and configuring JSON-RPC servers
+- **[Methods](DOCS.md#doc-docs-methods)** - Implementing RPC methods with validation and resources
+- **[Clients](DOCS.md#doc-docs-clients)** - Building type-safe RPC clients with Saloon
 
 ## Change log
 

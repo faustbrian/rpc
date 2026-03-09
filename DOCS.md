@@ -1,10 +1,12 @@
 ## Table of Contents
 
-1. Getting Started (`docs/README.md`)
-2. Servers (`docs/servers.md`)
-3. Methods (`docs/methods.md`)
-4. Clients (`docs/clients.md`)
-5. Testing (`docs/testing.md`)
+1. [Getting Started](#doc-docs-readme) (`docs/README.md`)
+2. [Servers](#doc-docs-servers) (`docs/servers.md`)
+3. [Methods](#doc-docs-methods) (`docs/methods.md`)
+4. [Clients](#doc-docs-clients) (`docs/clients.md`)
+5. [Testing](#doc-docs-testing) (`docs/testing.md`)
+<a id="doc-docs-readme"></a>
+
 ## Installation
 
 Install via Composer:
@@ -255,6 +257,8 @@ Standard error response:
 - **[Methods](methods)** - Build methods with validation, authentication, and resources
 - **[Clients](clients)** - Create type-safe RPC clients with Saloon integration
 - **[Testing](testing)** - Test JSON-RPC endpoints with Pest helper functions
+
+<a id="doc-docs-servers"></a>
 
 ## Creating a Server
 
@@ -728,6 +732,8 @@ curl -X POST http://localhost/api/rpc \
 ```
 
 Returns the complete OpenRPC document describing the server's methods, parameters, return types, and error responses.
+
+<a id="doc-docs-methods"></a>
 
 ## Creating a Method
 
@@ -1368,6 +1374,8 @@ class UserBulkUpdateMethod extends AbstractMethod
 }
 ```
 
+<a id="doc-docs-clients"></a>
+
 ## Creating a Client
 
 ### JSON-RPC Client
@@ -1901,6 +1909,8 @@ foreach ($responses as $key => $response) {
     }
 }
 ```
+
+<a id="doc-docs-testing"></a>
 
 ## Testing RPC Endpoints
 
