@@ -78,7 +78,7 @@ final class DiscoverMethod extends AbstractMethod implements UnwrappedResponseIn
     #[Override()]
     public function getResult(): ContentDescriptorValue
     {
-        return ContentDescriptorValue::from([
+        return ContentDescriptorValue::create([
             'name' => 'OpenRPC Schema',
             'schema' => [
                 '$ref' => 'https://raw.githubusercontent.com/open-rpc/meta-schema/master/schema.json',
@@ -132,16 +132,34 @@ final class DiscoverMethod extends AbstractMethod implements UnwrappedResponseIn
             ],
             'methods' => $methods,
             'components' => [
-                'contentDescriptors' => collect(Facade::getContentDescriptors())->keyBy('name'),
-                'schemas' => collect(Facade::getSchemas())->keyBy('name'),
-                'errors' => collect($errors)->keyBy('message'),
+                'contentDescriptors' => collect(Facade::getContentDescriptors())
+                    ->mapWithKeys(function (ContentDescriptorValue|array $descriptor): array {
+                        if ($descriptor instanceof ContentDescriptorValue) {
+                            return [$descriptor->name => $descriptor];
+                        }
+
+                        return [$descriptor['name'] => $descriptor];
+                    })
+                    ->all(),
+                'schemas' => collect(Facade::getSchemas())
+                    ->mapWithKeys(function ($schema): array {
+                        if (is_array($schema)) {
+                            return [$schema['name'] => $schema['data']];
+                        }
+
+                        return $schema->toArray();
+                    })
+                    ->all(),
+                'errors' => collect($errors)
+                    ->mapWithKeys(fn (array $error): array => [$error['message'] => $error])
+                    ->all(),
             ],
         ]);
 
         // FIXME: the JSON Schema 'enum' keyword blows up the validator
         // $this->validateSchema(\json_encode($document, \JSON_THROW_ON_ERROR));
 
-        $result = DocumentValue::from($document)->toArray();
+        $result = DocumentValue::create($document)->toArray();
         assert(is_array($result));
 
         return $result;

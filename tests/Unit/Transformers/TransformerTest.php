@@ -27,7 +27,7 @@ describe('Transformer', function (): void {
     describe('Happy Paths', function (): void {
         test('transforms a model to a document data structure', function (): void {
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
@@ -52,7 +52,7 @@ describe('Transformer', function (): void {
             ]);
 
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
@@ -69,7 +69,7 @@ describe('Transformer', function (): void {
 
         test('transforms a collection to a document data structure', function (): void {
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
@@ -107,7 +107,7 @@ describe('Transformer', function (): void {
             ]);
 
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
@@ -138,14 +138,14 @@ describe('Transformer', function (): void {
             }
 
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
                 ]),
             )->cursorPaginate(
                 UserResource::query(
-                    RequestObjectData::from([
+                    RequestObjectData::create([
                         'jsonrpc' => '2.0',
                         'id' => '1',
                         'method' => 'get',
@@ -166,7 +166,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -187,7 +187,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -211,7 +211,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -236,7 +236,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -261,7 +261,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -286,7 +286,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -318,7 +318,7 @@ describe('Transformer', function (): void {
             }
 
             // First, get the initial page to extract the next cursor
-            $initialRequest = RequestObjectData::from([
+            $initialRequest = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -333,7 +333,7 @@ describe('Transformer', function (): void {
             $nextCursor = $initialDocument->meta['page']['cursor']['next'];
 
             // Act - Use the next cursor to get the second page
-            $requestWithCursor = RequestObjectData::from([
+            $requestWithCursor = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -364,7 +364,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -394,7 +394,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -427,7 +427,7 @@ describe('Transformer', function (): void {
                 ]);
             }
 
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '1',
                 'method' => 'get',
@@ -453,7 +453,7 @@ describe('Transformer', function (): void {
 
             // Act
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',
@@ -488,7 +488,7 @@ describe('Transformer', function (): void {
 
             // Act
             $document = Transformer::create(
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'get',

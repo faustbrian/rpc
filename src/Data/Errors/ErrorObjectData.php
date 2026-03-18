@@ -21,7 +21,7 @@ use Cline\RPC\Data\AbstractData;
  * @author Brian Faust <brian@cline.sh>
  * @see https://jsonapi.org/format/#error-objects
  */
-final class ErrorObjectData extends AbstractData
+final readonly class ErrorObjectData extends AbstractData
 {
     /**
      * Create a new JSON:API error object instance.
@@ -59,6 +59,6 @@ final class ErrorObjectData extends AbstractData
         public readonly string $title,
         public readonly string $detail,
         public readonly ?SourceData $source,
-        public readonly ?array $meta,
+        public readonly ?array $meta = null,
     ) {}
 }

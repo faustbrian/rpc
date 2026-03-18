@@ -147,7 +147,7 @@ describe('RequestObjectData', function (): void {
             ];
 
             // Act
-            $request = RequestObjectData::from($data);
+            $request = RequestObjectData::create($data);
 
             // Assert
             expect($request)->toBeInstanceOf(RequestObjectData::class)

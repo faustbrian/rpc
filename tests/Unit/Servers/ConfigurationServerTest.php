@@ -18,13 +18,12 @@ use Tests\Support\Fakes\Methods\Sum;
 
 describe('ConfigurationServer', function (): void {
     test('creates server from configuration and accesses properties', function (): void {
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => [],
             'schemas' => [],
         ]);
@@ -46,7 +45,7 @@ describe('ConfigurationServer', function (): void {
             NotifyHello::class,
         ];
 
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
@@ -66,13 +65,12 @@ describe('ConfigurationServer', function (): void {
         Config::set('rpc.paths.methods', '/non/existent/directory');
         Config::set('rpc.namespaces.methods', 'App\\Methods');
 
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => [],
             'schemas' => [],
         ]);
@@ -90,13 +88,12 @@ describe('ConfigurationServer', function (): void {
         Config::set('rpc.paths.methods', $methodsPath);
         Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test-auto-discover',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => [],
             'schemas' => [],
         ]);
@@ -123,13 +120,12 @@ describe('ConfigurationServer', function (): void {
             (object) ['type' => 'schema2'],
         ];
 
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => $contentDescriptors,
             'schemas' => $schemas,
         ]);
@@ -147,13 +143,12 @@ describe('ConfigurationServer', function (): void {
         Config::set('rpc.paths.methods', $methodsPath);
         Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-        $serverData = ServerData::from([
+        $serverData = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => [],
             'schemas' => [],
         ]);
@@ -181,13 +176,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-pipeline',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -217,13 +211,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-nested',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -252,13 +245,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-ucfirst',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -285,13 +277,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-filtering',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -318,13 +309,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-interface-check',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -352,13 +342,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-return',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -391,13 +380,12 @@ describe('ConfigurationServer', function (): void {
                 ],
             ];
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => $contentDescriptors,
                 'schemas' => [],
             ]);
@@ -435,13 +423,12 @@ describe('ConfigurationServer', function (): void {
                 ],
             ];
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => $schemas,
             ]);
@@ -460,13 +447,12 @@ describe('ConfigurationServer', function (): void {
 
         test('handles empty content descriptors array', function (): void {
             // Arrange
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -482,13 +468,12 @@ describe('ConfigurationServer', function (): void {
 
         test('handles empty schemas array', function (): void {
             // Arrange
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -521,13 +506,12 @@ describe('ConfigurationServer', function (): void {
                 ],
             ];
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => $contentDescriptors,
                 'schemas' => [],
             ]);
@@ -561,13 +545,12 @@ describe('ConfigurationServer', function (): void {
                 ],
             ];
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => $schemas,
             ]);
@@ -591,13 +574,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-invalid',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);
@@ -619,13 +601,12 @@ describe('ConfigurationServer', function (): void {
             Config::set('rpc.paths.methods', $methodsPath);
             Config::set('rpc.namespaces.methods', $methodsNamespace);
 
-            $serverData = ServerData::from([
+            $serverData = ServerData::create([
                 'name' => 'test-no-interface',
                 'path' => '/rpc',
                 'route' => 'rpc',
                 'version' => '1.0',
                 'middleware' => [],
-                'methods' => null,
                 'content_descriptors' => [],
                 'schemas' => [],
             ]);

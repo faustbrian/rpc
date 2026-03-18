@@ -24,7 +24,7 @@ use Illuminate\Support\Str;
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#request_object
  */
-final class RequestObjectData extends AbstractData
+final readonly class RequestObjectData extends AbstractData
 {
     /**
      * Create a new JSON-RPC request object instance.
@@ -46,7 +46,7 @@ final class RequestObjectData extends AbstractData
         public readonly string $jsonrpc,
         public readonly mixed $id,
         public readonly string $method,
-        public readonly ?array $params,
+        public readonly ?array $params = null,
     ) {}
 
     /**
@@ -63,12 +63,17 @@ final class RequestObjectData extends AbstractData
      */
     public static function asRequest(string $method, ?array $params = null, mixed $id = null): self
     {
-        return self::from([
+        $payload = [
             'jsonrpc' => '2.0',
             'id' => $id ?? Str::ulid(),
             'method' => $method,
-            'params' => $params,
-        ]);
+        ];
+
+        if ($params !== null) {
+            $payload['params'] = $params;
+        }
+
+        return self::create($payload);
     }
 
     /**
@@ -85,12 +90,17 @@ final class RequestObjectData extends AbstractData
      */
     public static function asNotification(string $method, ?array $params = null): self
     {
-        return self::from([
+        $payload = [
             'jsonrpc' => '2.0',
             'id' => null,
             'method' => $method,
-            'params' => $params,
-        ]);
+        ];
+
+        if ($params !== null) {
+            $payload['params'] = $params;
+        }
+
+        return self::create($payload);
     }
 
     /**

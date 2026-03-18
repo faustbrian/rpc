@@ -14,14 +14,14 @@ use Cline\RPC\Data\Errors\SourceData;
 describe('ErrorObjectData', function (): void {
     describe('Happy Paths', function (): void {
         test('creates instance with all fields', function (): void {
-            $data = ErrorObjectData::from([
+            $data = ErrorObjectData::create([
                 'id' => 'error-123',
-                'links' => LinksData::from(['about' => 'https://example.com/error']),
+                'links' => LinksData::create(['about' => 'https://example.com/error']),
                 'status' => '400',
                 'code' => 'INVALID_REQUEST',
                 'title' => 'Invalid Request',
                 'detail' => 'The request was malformed',
-                'source' => SourceData::from(['pointer' => '/data/attributes']),
+                'source' => SourceData::create(['pointer' => '/data/attributes']),
                 'meta' => ['timestamp' => '2024-01-01'],
             ]);
 
@@ -31,7 +31,7 @@ describe('ErrorObjectData', function (): void {
         });
 
         test('creates instance with minimal fields', function (): void {
-            $data = ErrorObjectData::from([
+            $data = ErrorObjectData::create([
                 'id' => 'err-500',
                 'links' => null,
                 'status' => '500',
@@ -39,7 +39,6 @@ describe('ErrorObjectData', function (): void {
                 'title' => 'Internal Server Error',
                 'detail' => 'An error occurred',
                 'source' => null,
-                'meta' => null,
             ]);
 
             expect($data)->toBeInstanceOf(ErrorObjectData::class)

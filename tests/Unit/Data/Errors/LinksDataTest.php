@@ -12,7 +12,7 @@ use Cline\RPC\Data\Errors\LinksData;
 describe('LinksData', function (): void {
     describe('Happy Paths', function (): void {
         test('creates instance from array', function (): void {
-            $data = LinksData::from([
+            $data = LinksData::create([
                 'about' => 'https://example.com/docs/errors',
                 'type' => 'https://example.com/types/validation',
             ]);

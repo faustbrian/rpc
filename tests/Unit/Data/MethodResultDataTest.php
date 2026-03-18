@@ -20,7 +20,7 @@ describe('MethodResultData', function (): void {
             ];
 
             // Act
-            $data = MethodResultData::from($inputData);
+            $data = MethodResultData::create($inputData);
 
             // Assert
             expect($data)->toBeInstanceOf(MethodResultData::class)
@@ -38,7 +38,7 @@ describe('MethodResultData', function (): void {
             ];
 
             // Act
-            $data = MethodResultData::from($inputData);
+            $data = MethodResultData::create($inputData);
 
             // Assert
             expect($data)->toBeInstanceOf(MethodResultData::class)

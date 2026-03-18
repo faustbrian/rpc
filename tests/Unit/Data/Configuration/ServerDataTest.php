@@ -11,13 +11,12 @@ use Cline\RPC\Data\Configuration\ServerData;
 
 describe('ServerData', function (): void {
     test('creates instance from array', function (): void {
-        $data = ServerData::from([
+        $data = ServerData::create([
             'name' => 'test',
             'path' => '/rpc',
             'route' => 'rpc',
             'version' => '1.0',
             'middleware' => [],
-            'methods' => null,
             'content_descriptors' => [],
             'schemas' => [],
         ]);

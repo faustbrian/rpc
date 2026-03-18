@@ -8,8 +8,10 @@
  */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Tests\Support\Fakes\Server;
 use Tests\Support\MethodCaller;
+use function Pest\Laravel\call;
 
 // These tests are based on the examples from https://www.jsonrpc.org/specification
 
@@ -20,7 +22,44 @@ describe('MethodController', function (): void {
 
     describe('Happy Paths', function (): void {
         test('rpc.discover (OpenRPC)', function (): void {
-            MethodCaller::call('rpc-discover');
+            $request = \file_get_contents(\realpath(__DIR__.'/../../Support/Fixtures/Requests/rpc-discover.json'));
+
+            $response = call('POST', URL::to('/rpc'), [], [], [], [], $request)
+                ->assertOk()
+                ->assertHeader('Content-Type', 'application/json');
+
+            $findDocument = static function (mixed $payload) use (&$findDocument): ?array {
+                if (!is_array($payload)) {
+                    return null;
+                }
+
+                if (array_key_exists('openrpc', $payload)) {
+                    return $payload;
+                }
+
+                foreach ($payload as $value) {
+                    $document = $findDocument($value);
+
+                    if ($document !== null) {
+                        return $document;
+                    }
+                }
+
+                return null;
+            };
+
+            $payload = $findDocument($response->json());
+
+            expect($payload)->toBeArray()
+                ->and($payload['openrpc'])->toBe('1.3.2')
+                ->and($payload['info']['title'])->toBe('Laravel')
+                ->and($payload['methods'])->toBeArray()
+                ->and($payload['components']['contentDescriptors'])->toHaveKey('page')
+                ->and($payload['components']['schemas'])->toHaveKey('CursorPaginator')
+                ->and($payload['components']['errors'])->toHaveKey('Invalid params');
+
+            expect(collect($payload['methods'])->pluck('name')->all())
+                ->toContain('rpc.discover');
         });
     });
 

@@ -35,7 +35,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($validData);
+            $instance = TestContentDescriptorData::create($validData);
 
             // Assert
             expect($instance)->toBeInstanceOf(TestContentDescriptorData::class)
@@ -54,7 +54,7 @@ describe('AbstractContentDescriptorData', function (): void {
 
         test('inherits AbstractData null filtering behavior', function (): void {
             // Arrange
-            $instance = TestContentDescriptorData::from([
+            $instance = TestContentDescriptorData::create([
                 'email' => 'test@example.com',
                 'name' => 'Jane Smith',
             ]);
@@ -121,7 +121,7 @@ describe('AbstractContentDescriptorData', function (): void {
 
         test('serializes to JSON correctly', function (): void {
             // Arrange
-            $instance = TestContentDescriptorData::from([
+            $instance = TestContentDescriptorData::create([
                 'email' => 'json@example.com',
                 'name' => 'JSON Test',
             ]);
@@ -166,7 +166,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert - Verifies data object creation works
             expect($instance)->toBeInstanceOf(TestContentDescriptorData::class);
@@ -174,14 +174,14 @@ describe('AbstractContentDescriptorData', function (): void {
 
         test('throws error when required fields are missing', function (): void {
             // Arrange & Act & Assert
-            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::from([
+            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::create([
                 'name' => 'Only Name',
             ]))->toThrow(Exception::class);
         });
 
         test('throws error when data types are incorrect', function (): void {
             // Arrange & Act & Assert
-            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::from([
+            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::create([
                 'email' => 123,
                 'name' => ['not', 'a', 'string'],
             ]))->toThrow(TypeError::class);
@@ -195,7 +195,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert - Validates proper data creation
             expect($instance)->toBeInstanceOf(TestContentDescriptorData::class)
@@ -205,7 +205,7 @@ describe('AbstractContentDescriptorData', function (): void {
 
         test('throws error when passing null to required fields', function (): void {
             // Arrange & Act & Assert
-            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::from([
+            expect(fn (): TestContentDescriptorData => TestContentDescriptorData::create([
                 'email' => null,
                 'name' => null,
             ]))->toThrow(TypeError::class);
@@ -221,7 +221,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($unicodeData);
+            $instance = TestContentDescriptorData::create($unicodeData);
 
             // Assert
             expect($instance->name)->toBe('日本語 User ñame')
@@ -237,7 +237,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert
             expect($instance->name)->toBe($longString)
@@ -252,7 +252,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert
             expect($instance->email)->toBe('user+tag@example.com')
@@ -267,7 +267,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert - Laravel Data may or may not trim, this tests actual behavior
             expect($instance->email)->toBeString()
@@ -294,7 +294,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert
             expect($instance->email)->toBe('CamelCase@EXAMPLE.COM');
@@ -341,12 +341,12 @@ describe('AbstractContentDescriptorData', function (): void {
                 'email' => 'cycle@example.com',
                 'name' => 'Cycle Test',
             ];
-            $instance = TestContentDescriptorData::from($originalData);
+            $instance = TestContentDescriptorData::create($originalData);
 
             // Act
             $json = json_encode($instance);
             $decoded = json_decode($json, true);
-            $recreated = TestContentDescriptorData::from($decoded);
+            $recreated = TestContentDescriptorData::create($decoded);
 
             // Assert
             expect($recreated->email)->toBe($instance->email)
@@ -362,7 +362,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert
             expect($instance->email)->toBe('user@münchen.de');
@@ -370,7 +370,7 @@ describe('AbstractContentDescriptorData', function (): void {
 
         test('validates readonly properties cannot be modified', function (): void {
             // Arrange
-            $instance = TestContentDescriptorData::from([
+            $instance = TestContentDescriptorData::create([
                 'email' => 'readonly@example.com',
                 'name' => 'Readonly Test',
             ]);
@@ -389,7 +389,7 @@ describe('AbstractContentDescriptorData', function (): void {
             ];
 
             // Act
-            $instance = TestContentDescriptorData::from($data);
+            $instance = TestContentDescriptorData::create($data);
 
             // Assert - Ensures string validation is applied
             expect($instance)->toBeInstanceOf(TestContentDescriptorData::class)
@@ -402,7 +402,7 @@ describe('AbstractContentDescriptorData', function (): void {
         test('content descriptor generation does not mutate class state', function (): void {
             // Act
             $descriptor1 = TestContentDescriptorData::createContentDescriptor();
-            $instance = TestContentDescriptorData::from([
+            $instance = TestContentDescriptorData::create([
                 'email' => 'state@example.com',
                 'name' => 'State Test',
             ]);

@@ -222,19 +222,16 @@
         },
         "schemas": {
             "CursorPaginator": {
-                "name": "CursorPaginator",
-                "data": {
-                    "type": "object",
-                    "required": ["cursor"],
-                    "properties": {
-                        "cursor": {
-                            "type": "string",
-                            "description": "The cursor to start from. If not specified, the first page is returned."
-                        },
-                        "size": {
-                            "type": "integer",
-                            "description": "The number of items to return per page. If not specified, the default page size is used."
-                        }
+                "type": "object",
+                "required": ["cursor"],
+                "properties": {
+                    "cursor": {
+                        "type": "string",
+                        "description": "The cursor to start from. If not specified, the first page is returned."
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The number of items to return per page. If not specified, the default page size is used."
                     }
                 }
             }

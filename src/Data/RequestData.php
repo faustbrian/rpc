@@ -20,7 +20,7 @@ namespace Cline\RPC\Data;
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#batch
  */
-final class RequestData extends AbstractData
+final readonly class RequestData extends AbstractData
 {
     /**
      * Create a new request container instance.

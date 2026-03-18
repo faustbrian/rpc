@@ -15,6 +15,7 @@ use Cline\RPC\Data\RequestObjectData;
 use Cline\RPC\Data\ResponseData;
 use Cline\RPC\Exceptions\ExceptionMapper;
 use Cline\RPC\Exceptions\InvalidDataException;
+use Cline\Struct\Exceptions\DataValidationException;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
@@ -23,7 +24,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use ReflectionClass;
 use ReflectionNamedType;
-use Spatie\LaravelData\Data;
+use Cline\Struct\AbstractData as Data;
 use Throwable;
 
 use function array_filter;
@@ -91,13 +92,13 @@ final readonly class CallMethod
                 return $result;
             }
 
-            return ResponseData::from([
+            return ResponseData::create([
                 'jsonrpc' => $this->requestObject->jsonrpc,
                 'id' => $this->requestObject->id,
                 'result' => $result,
             ]);
         } catch (Throwable $throwable) {
-            return ResponseData::from([
+            return ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => $this->requestObject->id,
                 'error' => ExceptionMapper::execute($throwable)->toError(),
@@ -147,10 +148,10 @@ final readonly class CallMethod
             if (is_subclass_of((string) $parameterType, Data::class)) {
                 try {
                     $parametersMapped[$parameterName] = call_user_func(
-                        [(string) $parameterType, 'validateAndCreate'],
+                        [(string) $parameterType, 'createWithValidation'],
                         $parameter->getName() === 'data' ? $params : $parameterValue,
                     );
-                } catch (ValidationException $exception) {
+                } catch (DataValidationException|ValidationException $exception) {
                     throw InvalidDataException::create($exception);
                 }
             } elseif ($parameterType === 'array' && $parameter->getName() === 'data') {

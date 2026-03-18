@@ -189,7 +189,7 @@ describe('DiscoverMethod', function (): void {
 
             test('assembles components section with contentDescriptors, schemas, and errors', function (): void {
                 // Arrange
-                $contentDescriptor = ContentDescriptorValue::from([
+                $contentDescriptor = ContentDescriptorValue::create([
                     'name' => 'TestDescriptor',
                     'schema' => ['type' => 'string'],
                 ]);

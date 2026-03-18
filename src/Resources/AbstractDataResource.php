@@ -11,7 +11,7 @@ namespace Cline\RPC\Resources;
 
 use Illuminate\Support\Str;
 use Override;
-use Spatie\LaravelData\Data;
+use Cline\Struct\AbstractData as Data;
 
 use function class_basename;
 use function data_get;

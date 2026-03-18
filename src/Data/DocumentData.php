@@ -22,7 +22,7 @@ namespace Cline\RPC\Data;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class DocumentData extends AbstractData
+final readonly class DocumentData extends AbstractData
 {
     /**
      * Create a new JSON-RPC document response.

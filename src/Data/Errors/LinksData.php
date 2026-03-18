@@ -21,7 +21,7 @@ use Cline\RPC\Data\AbstractData;
  * @author Brian Faust <brian@cline.sh>
  * @see https://jsonapi.org/format/#error-objects
  */
-final class LinksData extends AbstractData
+final readonly class LinksData extends AbstractData
 {
     /**
      * Create a new error links instance.

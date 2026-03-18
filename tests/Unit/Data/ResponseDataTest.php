@@ -55,7 +55,7 @@ describe('ResponseData', function (): void {
 
         test('identifies successful response with result data', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'result' => ['data' => 'success'],
@@ -72,11 +72,11 @@ describe('ResponseData', function (): void {
 
         test('detects server error in isFailed method', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_603,
                 'message' => 'Internal error',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'error' => $errorData,
@@ -94,7 +94,7 @@ describe('ResponseData', function (): void {
 
         test('identifies notification response correctly', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
             ]);
 
@@ -110,7 +110,7 @@ describe('ResponseData', function (): void {
 
         test('converts successful response to array correctly', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 123,
                 'result' => ['status' => 'ok'],
@@ -130,11 +130,11 @@ describe('ResponseData', function (): void {
 
         test('converts error response to array correctly', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_600,
                 'message' => 'Invalid Request',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => null,
                 'error' => $errorData,
@@ -154,11 +154,11 @@ describe('ResponseData', function (): void {
     describe('Sad Paths', function (): void {
         test('detects client error as failed response', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_600,
                 'message' => 'Invalid Request',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'error' => $errorData,
@@ -177,7 +177,7 @@ describe('ResponseData', function (): void {
 
         test('response with id is not a notification', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
             ]);
@@ -192,7 +192,7 @@ describe('ResponseData', function (): void {
 
         test('response with result is not a notification', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'result' => 'some result',
             ]);
@@ -207,11 +207,11 @@ describe('ResponseData', function (): void {
 
         test('response with error is not a notification', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_700,
                 'message' => 'Parse error',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'error' => $errorData,
             ]);
@@ -226,7 +226,7 @@ describe('ResponseData', function (): void {
 
         test('response without error is not failed', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'result' => 'success',
@@ -246,11 +246,11 @@ describe('ResponseData', function (): void {
     describe('Edge Cases', function (): void {
         test('handles server error code boundaries', function (int $code, string $message): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => $code,
                 'message' => $message,
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'error' => $errorData,
             ]);
@@ -270,11 +270,11 @@ describe('ResponseData', function (): void {
 
         test('handles all client error codes', function (int $code, string $message): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => $code,
                 'message' => $message,
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'error' => $errorData,
             ]);
@@ -296,11 +296,11 @@ describe('ResponseData', function (): void {
 
         test('handles parse error as server error', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_700,
                 'message' => 'Parse error',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'error' => $errorData,
             ]);
@@ -317,7 +317,7 @@ describe('ResponseData', function (): void {
 
         test('handles response with all null optional fields as notification', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => null,
                 'result' => null,
@@ -335,7 +335,7 @@ describe('ResponseData', function (): void {
 
         test('handles mixed id types correctly', function (mixed $id, bool $shouldBeNotification): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => $id,
                 'result' => $id === null ? null : 'success',
@@ -359,7 +359,7 @@ describe('ResponseData', function (): void {
     describe('Regression Tests', function (): void {
         test('ensures toArray excludes error field for successful responses', function (): void {
             // Arrange
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'result' => ['status' => 'success'],
@@ -375,11 +375,11 @@ describe('ResponseData', function (): void {
 
         test('ensures toArray excludes result field for error responses', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_603,
                 'message' => 'Internal error',
             ]);
-            $response = ResponseData::from([
+            $response = ResponseData::create([
                 'jsonrpc' => '2.0',
                 'id' => 1,
                 'error' => $errorData,

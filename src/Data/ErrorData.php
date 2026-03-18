@@ -22,7 +22,7 @@ use function in_array;
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#error_object
  */
-final class ErrorData extends AbstractData
+final readonly class ErrorData extends AbstractData
 {
     /**
      * Create a new JSON-RPC error data instance.

@@ -444,7 +444,7 @@ describe('RendersThrowable', function (): void {
             $request->shouldReceive('input')->with('id')->once()->andReturn(1);
 
             $customException = new CustomHeaderException(
-                ErrorData::from(['code' => -32_000, 'message' => 'Custom']),
+                ErrorData::create(['code' => -32_000, 'message' => 'Custom']),
             );
 
             $exceptions = Mockery::mock(Exceptions::class);
@@ -473,7 +473,7 @@ describe('RendersThrowable', function (): void {
             $request->shouldReceive('input')->with('id')->once()->andReturn(1);
 
             $customException = new CustomStatusCodeException(
-                ErrorData::from(['code' => -32_601, 'message' => 'Method not found']),
+                ErrorData::create(['code' => -32_601, 'message' => 'Method not found']),
             );
 
             $exceptions = Mockery::mock(Exceptions::class);

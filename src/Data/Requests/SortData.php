@@ -20,7 +20,7 @@ use Cline\RPC\Data\AbstractData;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class SortData extends AbstractData
+final readonly class SortData extends AbstractData
 {
     /**
      * Create a new sort data instance.

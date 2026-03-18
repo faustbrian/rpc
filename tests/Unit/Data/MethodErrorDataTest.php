@@ -13,10 +13,10 @@ use Cline\RPC\Data\MethodErrorData;
 describe('MethodErrorData', function (): void {
     describe('Happy Paths', function (): void {
         test('creates instance from array', function (): void {
-            $data = MethodErrorData::from([
+            $data = MethodErrorData::create([
                 'jsonrpc' => '2.0',
                 'id' => '123',
-                'error' => ErrorData::from([
+                'error' => ErrorData::create([
                     'code' => -32_600,
                     'message' => 'Invalid Request',
                     'data' => null,

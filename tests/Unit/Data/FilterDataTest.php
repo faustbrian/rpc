@@ -11,7 +11,7 @@ use Cline\RPC\Data\FilterData;
 
 describe('FilterData', function (): void {
     test('creates instance from array', function (): void {
-        $data = FilterData::from([
+        $data = FilterData::create([
             'attribute' => 'name',
             'condition' => 'eq',
             'value' => 'test',

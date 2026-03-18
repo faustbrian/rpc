@@ -10,8 +10,8 @@
 namespace Cline\RPC\Data\Requests;
 
 use Cline\RPC\Data\AbstractData;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\DataCollection;
+use Cline\Struct\Attributes\AsDataCollection;
+use Cline\Struct\Support\DataCollection;
 
 /**
  * Represents a comprehensive list/index request with query parameters.
@@ -22,7 +22,7 @@ use Spatie\LaravelData\DataCollection;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class ListRequestData extends AbstractData
+final readonly class ListRequestData extends AbstractData
 {
     /**
      * Create a new list request data instance.
@@ -47,11 +47,11 @@ final class ListRequestData extends AbstractData
      *                                                              Multiple sort criteria are applied in sequence.
      */
     public function __construct(
-        public readonly ?array $fields,
-        #[DataCollectionOf(FilterData::class)]
-        public readonly ?DataCollection $filters,
-        public readonly ?array $relationships,
-        #[DataCollectionOf(SortData::class)]
-        public readonly ?DataCollection $sorts,
+        public readonly ?array $fields = null,
+        #[AsDataCollection(FilterData::class)]
+        public readonly ?DataCollection $filters = null,
+        public readonly ?array $relationships = null,
+        #[AsDataCollection(SortData::class)]
+        public readonly ?DataCollection $sorts = null,
     ) {}
 }

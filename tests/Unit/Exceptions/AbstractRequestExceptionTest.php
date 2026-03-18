@@ -16,7 +16,7 @@ describe('AbstractRequestException', function (): void {
     describe('Happy Paths', function (): void {
         test('creates exception with error data', function (): void {
             // Arrange
-            $errorData = ErrorData::from([
+            $errorData = ErrorData::create([
                 'code' => -32_600,
                 'message' => 'Invalid Request',
                 'data' => ['detail' => 'Missing required field'],

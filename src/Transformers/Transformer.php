@@ -75,12 +75,12 @@ final readonly class Transformer
     public function item(Model|ResourceInterface $item): DocumentData
     {
         if ($item instanceof Model) {
-            return DocumentData::from([
+            return DocumentData::create([
                 'data' => ModelNormalizer::normalize($item)->toArray(),
             ]);
         }
 
-        return DocumentData::from([
+        return DocumentData::create([
             'data' => ResourceNormalizer::normalize($item)->toArray(),
         ]);
     }
@@ -96,7 +96,7 @@ final readonly class Transformer
      */
     public function collection(Collection $collection): DocumentData
     {
-        return DocumentData::from([
+        return DocumentData::create([
             'data' => $collection->map(function (Model|ResourceInterface $item): ResourceObjectData {
                 if ($item instanceof Model) {
                     return ModelNormalizer::normalize($item);
@@ -142,7 +142,7 @@ final readonly class Transformer
             ];
         }
 
-        return DocumentData::from($document);
+        return DocumentData::create($document);
     }
 
     /**
@@ -180,7 +180,7 @@ final readonly class Transformer
             ];
         }
 
-        return DocumentData::from($document);
+        return DocumentData::create($document);
     }
 
     /**
@@ -217,6 +217,6 @@ final readonly class Transformer
             ];
         }
 
-        return DocumentData::from($document);
+        return DocumentData::create($document);
     }
 }

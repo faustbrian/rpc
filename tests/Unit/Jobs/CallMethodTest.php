@@ -22,7 +22,7 @@ describe('CallMethod', function (): void {
     describe('Happy Paths', function (): void {
         test('executes method successfully and returns wrapped response', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '123',
                 'method' => 'test.method',
@@ -51,11 +51,10 @@ describe('CallMethod', function (): void {
 
         test('executes method with no parameters and returns result', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'abc-123',
                 'method' => 'test.noParams',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod
@@ -77,7 +76,7 @@ describe('CallMethod', function (): void {
 
         test('returns unwrapped response when method implements UnwrappedResponseInterface', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '456',
                 'method' => 'test.unwrapped',
@@ -104,7 +103,7 @@ describe('CallMethod', function (): void {
 
         test('resolves method parameters from request data', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => '789',
                 'method' => 'user.create',
@@ -140,7 +139,7 @@ describe('CallMethod', function (): void {
 
         test('handles method with requestObject parameter correctly', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'req-123',
                 'method' => 'test.withRequestObject',
@@ -171,7 +170,7 @@ describe('CallMethod', function (): void {
 
         test('resolves snake_case parameters to camelCase method parameters', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'snake-123',
                 'method' => 'test.snakeCase',
@@ -201,7 +200,7 @@ describe('CallMethod', function (): void {
 
         test('handles array data parameter when method expects array type', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'array-123',
                 'method' => 'test.arrayData',
@@ -234,7 +233,7 @@ describe('CallMethod', function (): void {
 
         test('resolves Data object parameter with validateAndCreate', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'data-object-123',
                 'method' => 'user.createWithData',
@@ -278,7 +277,7 @@ describe('CallMethod', function (): void {
 
         test('resolves Data object when parameter name is "data"', function (): void {
             // Arrange - Special case where parameter is named "data"
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'data-param-123',
                 'method' => 'product.create',
@@ -320,7 +319,7 @@ describe('CallMethod', function (): void {
 
         test('resolves multiple Data object parameters', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'multi-data-123',
                 'method' => 'order.create',
@@ -368,7 +367,7 @@ describe('CallMethod', function (): void {
 
         test('handles mixed Data objects and primitive parameters', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'mixed-params-123',
                 'method' => 'invoice.create',
@@ -420,11 +419,10 @@ describe('CallMethod', function (): void {
     describe('Sad Paths', function (): void {
         test('catches exception and returns error response', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'error-123',
                 'method' => 'test.failing',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod
@@ -449,7 +447,7 @@ describe('CallMethod', function (): void {
 
         test('handles ValidationException during Data object validation', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'validation-error',
                 'method' => 'test.validation',
@@ -481,7 +479,7 @@ describe('CallMethod', function (): void {
 
         test('returns error response for method that throws exception', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'runtime-error',
                 'method' => 'test.runtimeError',
@@ -508,7 +506,7 @@ describe('CallMethod', function (): void {
 
         test('handles InvalidDataException during parameter resolution', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'invalid-data',
                 'method' => 'test.invalidData',
@@ -541,7 +539,7 @@ describe('CallMethod', function (): void {
 
         test('throws InvalidDataException when Data object validation fails', function (): void {
             // Arrange - Invalid email format to trigger validation error
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'data-validation-fail',
                 'method' => 'user.create',
@@ -578,7 +576,7 @@ describe('CallMethod', function (): void {
 
         test('handles validation error for Data parameter named "data"', function (): void {
             // Arrange - Missing required field to trigger validation
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'data-param-validation-fail',
                 'method' => 'product.create',
@@ -611,7 +609,7 @@ describe('CallMethod', function (): void {
 
         test('handles validation failure for multiple Data parameters', function (): void {
             // Arrange - Invalid data for both parameters
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'multi-data-validation-fail',
                 'method' => 'order.create',
@@ -654,7 +652,7 @@ describe('CallMethod', function (): void {
     describe('Edge Cases', function (): void {
         test('handles empty params array', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'empty-params',
                 'method' => 'test.noParams',
@@ -680,7 +678,7 @@ describe('CallMethod', function (): void {
 
         test('handles null parameter values', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'null-params',
                 'method' => 'test.nullValues',
@@ -710,7 +708,7 @@ describe('CallMethod', function (): void {
 
         test('filters out null values from resolved parameters', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'filter-nulls',
                 'method' => 'test.filterNulls',
@@ -739,7 +737,7 @@ describe('CallMethod', function (): void {
 
         test('handles method with multiple parameter types', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'mixed-types',
                 'method' => 'test.mixedTypes',
@@ -805,7 +803,7 @@ describe('CallMethod', function (): void {
 
         test('handles nested parameter paths with dot notation', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'nested-params',
                 'method' => 'test.nested',
@@ -835,11 +833,10 @@ describe('CallMethod', function (): void {
 
         test('handles exception in method that implements UnwrappedResponseInterface', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'unwrapped-error',
                 'method' => 'test.unwrappedError',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod implements UnwrappedResponseInterface
@@ -861,11 +858,10 @@ describe('CallMethod', function (): void {
 
         test('preserves jsonrpc version from request in response', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'version-test',
                 'method' => 'test.version',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod
@@ -886,7 +882,7 @@ describe('CallMethod', function (): void {
 
         test('handles method with no type hints on parameters', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'no-types',
                 'method' => 'test.noTypes',
@@ -915,7 +911,7 @@ describe('CallMethod', function (): void {
 
         test('resolves parameters when reflection returns no named type', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'union-type',
                 'method' => 'test.unionType',
@@ -944,7 +940,7 @@ describe('CallMethod', function (): void {
 
         test('handles optional parameters that are not provided', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'optional-params',
                 'method' => 'test.optionalParams',
@@ -981,7 +977,7 @@ describe('CallMethod', function (): void {
 
         test('filters falsy values from resolved parameters', function (): void {
             // Arrange - This tests the actual behavior where array_filter removes falsy values
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'falsy-params',
                 'method' => 'test.falsyParams',
@@ -1023,7 +1019,7 @@ describe('CallMethod', function (): void {
 
         test('handles Data object parameter with empty object', function (): void {
             // Arrange - Empty object for Data parameter to test validation
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'empty-data-object',
                 'method' => 'process.withData',
@@ -1059,7 +1055,7 @@ describe('CallMethod', function (): void {
 
         test('handles Data object with partial valid data', function (): void {
             // Arrange - Some valid, some invalid fields
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'partial-data',
                 'method' => 'user.update',
@@ -1103,7 +1099,7 @@ describe('CallMethod', function (): void {
 
         test('handles Data object parameter with snake_case to camelCase conversion', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'snake-case-data',
                 'method' => 'user.process',
@@ -1149,11 +1145,10 @@ describe('CallMethod', function (): void {
     describe('Regressions', function (): void {
         test('ensures ExceptionMapper is used for all caught exceptions', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'mapper-test',
                 'method' => 'test.mapper',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod
@@ -1177,7 +1172,7 @@ describe('CallMethod', function (): void {
 
         test('ensures requestObject parameter is always filtered from parameter resolution', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'filter-request-object',
                 'method' => 'test.filterRequestObject',
@@ -1214,11 +1209,10 @@ describe('CallMethod', function (): void {
 
         test('ensures error responses always use jsonrpc 2.0', function (): void {
             // Arrange
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'error-version',
                 'method' => 'test.errorVersion',
-                'params' => null,
             ]);
 
             $method = new class() extends AbstractMethod
@@ -1240,7 +1234,7 @@ describe('CallMethod', function (): void {
 
         test('ensures ValidationException is wrapped in InvalidDataException for Data objects', function (): void {
             // Arrange - Regression test to ensure line 154 is covered
-            $requestObject = RequestObjectData::from([
+            $requestObject = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'id' => 'validation-wrap',
                 'method' => 'user.register',

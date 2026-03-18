@@ -9,6 +9,7 @@
 
 namespace Cline\RPC\Exceptions;
 
+use Cline\Struct\Exceptions\DataValidationException;
 use Illuminate\Validation\ValidationException;
 
 /**
@@ -30,16 +31,19 @@ final class InvalidDataException extends AbstractRequestException
      * format. Each validation error is converted into a separate error object with
      * JSON Pointer notation indicating the exact field location and HTTP 422 status.
      *
-     * @param  ValidationException $exception Laravel validation exception containing field-level
-     *                                        validation errors with attribute names and error
-     *                                        messages. The errors are normalized into JSON-RPC
-     *                                        error format with pointer references to specific
-     *                                        fields in the request data payload.
+     * @param  DataValidationException|ValidationException $exception Laravel or Struct validation
+     *                                                                exception containing field-level
+     *                                                                validation errors with attribute
+     *                                                                names and error messages. The
+     *                                                                errors are normalized into JSON-RPC
+     *                                                                error format with pointer references
+     *                                                                to specific fields in the request
+     *                                                                data payload.
      * @return self                a new instance containing all validation errors formatted as JSON-RPC
      *                             error objects, each with HTTP 422 status, JSON Pointer source location
      *                             (/params/data/{attribute}), and the specific validation message
      */
-    public static function create(ValidationException $exception): self
+    public static function create(DataValidationException|ValidationException $exception): self
     {
         $normalized = [];
 

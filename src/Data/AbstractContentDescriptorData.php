@@ -10,6 +10,7 @@
 namespace Cline\RPC\Data;
 
 use Cline\OpenRpc\ContentDescriptor\MethodDataContentDescriptor;
+use Cline\RPC\JsonSchema\RulesTransformer;
 
 /**
  * Base class for data objects that can generate OpenRPC content descriptors.
@@ -23,7 +24,7 @@ use Cline\OpenRpc\ContentDescriptor\MethodDataContentDescriptor;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-abstract class AbstractContentDescriptorData extends AbstractData
+abstract readonly class AbstractContentDescriptorData extends AbstractData
 {
     /**
      * Generate an OpenRPC content descriptor array from this data class.
@@ -36,7 +37,9 @@ abstract class AbstractContentDescriptorData extends AbstractData
      */
     public static function createContentDescriptor(): array
     {
-        return MethodDataContentDescriptor::createFromData(self::class);
+        return MethodDataContentDescriptor::create(
+            RulesTransformer::transformDataObject(static::class),
+        );
     }
 
     /**

@@ -9,6 +9,7 @@
 
 namespace Cline\RPC\Data;
 
+use Cline\Struct\Serialization\SerializationOptions;
 use Override;
 
 /**
@@ -22,7 +23,7 @@ use Override;
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#response_object
  */
-final class MethodErrorData extends AbstractData
+final readonly class MethodErrorData extends AbstractData
 {
     /**
      * Create a new method error response instance.
@@ -51,7 +52,14 @@ final class MethodErrorData extends AbstractData
      * @return array{jsonrpc: string, id: mixed, error: ErrorData}
      */
     #[Override()]
-    public function toArray(): array
+    public function toArray(
+        bool $includeSensitive = false,
+        array $include = [],
+        array $exclude = [],
+        array $groups = [],
+        array $context = [],
+        ?SerializationOptions $serialization = null,
+    ): array
     {
         return [
             'jsonrpc' => $this->jsonrpc,

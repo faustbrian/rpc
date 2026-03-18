@@ -22,7 +22,7 @@ use Cline\RPC\Data\AbstractData;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class ServerData extends AbstractData
+final readonly class ServerData extends AbstractData
 {
     /**
      * Create a new server configuration instance.
@@ -58,7 +58,7 @@ final class ServerData extends AbstractData
         public readonly string $route,
         public readonly string $version,
         public readonly array $middleware,
-        public readonly ?array $methods,
+        public readonly ?array $methods = null,
         public readonly array $content_descriptors,
         public readonly array $schemas,
     ) {}

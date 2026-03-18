@@ -18,7 +18,7 @@ namespace Cline\RPC\Data;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class ResourceObjectData extends AbstractData
+final readonly class ResourceObjectData extends AbstractData
 {
     /**
      * Create a new resource object data instance.
@@ -43,6 +43,6 @@ final class ResourceObjectData extends AbstractData
         public readonly string $type,
         public readonly string $id,
         public readonly array $attributes,
-        public readonly ?array $relationships,
+        public readonly ?array $relationships = null,
     ) {}
 }

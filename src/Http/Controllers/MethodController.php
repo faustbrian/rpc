@@ -13,7 +13,7 @@ use Cline\RPC\Requests\RequestHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Spatie\LaravelData\Data;
+use Cline\Struct\AbstractData as Data;
 
 /**
  * HTTP controller for handling JSON-RPC method invocations.

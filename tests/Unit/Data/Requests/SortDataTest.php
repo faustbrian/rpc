@@ -11,7 +11,7 @@ use Cline\RPC\Data\Requests\SortData;
 
 describe('SortData', function (): void {
     test('creates instance from array', function (): void {
-        $data = SortData::from([
+        $data = SortData::create([
             'attribute' => 'created_at',
             'direction' => 'desc',
         ]);

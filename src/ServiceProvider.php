@@ -131,7 +131,7 @@ final class ServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         try {
-            $configuration = ConfigurationData::validateAndCreate((array) config('rpc'));
+            $configuration = ConfigurationData::createWithValidation((array) config('rpc'));
 
             foreach ($configuration->resources as $model => $resource) {
                 ResourceRepository::register($model, $resource);

@@ -9,8 +9,8 @@
 
 namespace Cline\RPC\Data;
 
+use Cline\Struct\AbstractData as StructData;
 use Override;
-use Spatie\LaravelData\Data;
 
 use function is_array;
 
@@ -27,7 +27,7 @@ use function is_array;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-abstract class AbstractData extends Data
+abstract readonly class AbstractData extends StructData
 {
     /**
      * Convert the data object to an array with null values removed.
@@ -39,10 +39,24 @@ abstract class AbstractData extends Data
      * @return array<string, mixed> Array representation without null values
      */
     #[Override()]
-    public function toArray(): array
+    public function toArray(
+        bool $includeSensitive = false,
+        array $include = [],
+        array $exclude = [],
+        array $groups = [],
+        array $context = [],
+        ?\Cline\Struct\Serialization\SerializationOptions $serialization = null,
+    ): array
     {
         /** @var array<string, mixed> $array */
-        $array = parent::toArray();
+        $array = parent::toArray(
+            $includeSensitive,
+            $include,
+            $exclude,
+            $groups,
+            $context,
+            $serialization,
+        );
 
         return $this->removeNullValuesRecursively($array);
     }

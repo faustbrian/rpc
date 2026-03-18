@@ -10,9 +10,7 @@
 namespace Tests\Support\Fixtures;
 
 use Cline\RPC\Data\AbstractContentDescriptorData;
-use Spatie\LaravelData\Attributes\Validation\Email;
-use Spatie\LaravelData\Attributes\Validation\Required;
-use Spatie\LaravelData\Attributes\Validation\StringType;
+use Cline\Struct\Attributes\Validate;
 
 /**
  * Concrete test implementation of AbstractContentDescriptorData.
@@ -24,7 +22,7 @@ use Spatie\LaravelData\Attributes\Validation\StringType;
  * @author Brian Faust <brian@cline.sh>
  * @internal
  */
-final class TestContentDescriptorData extends AbstractContentDescriptorData
+final readonly class TestContentDescriptorData extends AbstractContentDescriptorData
 {
     /**
      * Create a new test content descriptor data instance.
@@ -33,9 +31,9 @@ final class TestContentDescriptorData extends AbstractContentDescriptorData
      * @param string $name  Required name field for testing validation
      */
     public function __construct(
-        #[Required(), Email()]
+        #[Validate(['required', 'email'])]
         public readonly string $email,
-        #[Required(), StringType()]
+        #[Validate(['required', 'string'])]
         public readonly string $name,
     ) {}
 }

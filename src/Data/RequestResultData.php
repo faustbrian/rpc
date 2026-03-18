@@ -19,7 +19,7 @@ namespace Cline\RPC\Data;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class RequestResultData extends AbstractData
+final readonly class RequestResultData extends AbstractData
 {
     /**
      * Create a new request result instance.

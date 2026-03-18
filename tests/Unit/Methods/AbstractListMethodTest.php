@@ -30,7 +30,7 @@ describe('AbstractListMethod', function (): void {
         User::query()->create(['name' => 'Jane Doe', 'created_at' => now(), 'updated_at' => now()]);
 
         $method = new ListUsers();
-        $request = RequestObjectData::from([
+        $request = RequestObjectData::create([
             'jsonrpc' => '2.0',
             'method' => 'users.list',
             'id' => 1,

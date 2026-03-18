@@ -10,6 +10,7 @@
 namespace Cline\RPC\Data;
 
 use Cline\RPC\Exceptions\AbstractRequestException;
+use Cline\Struct\Serialization\SerializationOptions;
 use Override;
 
 /**
@@ -22,7 +23,7 @@ use Override;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class ResponseData extends AbstractData
+final readonly class ResponseData extends AbstractData
 {
     /**
      * Create a new response data instance.
@@ -60,7 +61,7 @@ final class ResponseData extends AbstractData
      */
     public static function createFromRequestException(AbstractRequestException $exception): self
     {
-        return self::from([
+        return self::create([
             'jsonrpc' => '2.0',
             'error' => $exception->toError(),
         ]);
@@ -77,7 +78,7 @@ final class ResponseData extends AbstractData
      */
     public static function asNotification(): self
     {
-        return self::from([
+        return self::create([
             'jsonrpc' => '2.0',
         ]);
     }
@@ -165,7 +166,14 @@ final class ResponseData extends AbstractData
      * @return array<string, mixed> The JSON-RPC 2.0 compliant response array.
      */
     #[Override()]
-    public function toArray(): array
+    public function toArray(
+        bool $includeSensitive = false,
+        array $include = [],
+        array $exclude = [],
+        array $groups = [],
+        array $context = [],
+        ?SerializationOptions $serialization = null,
+    ): array
     {
         if (!$this->error instanceof ErrorData) {
             return [

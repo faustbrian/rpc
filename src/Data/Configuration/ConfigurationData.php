@@ -10,9 +10,9 @@
 namespace Cline\RPC\Data\Configuration;
 
 use Cline\RPC\Data\AbstractData;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\Attributes\Validation\Present;
-use Spatie\LaravelData\DataCollection;
+use Cline\Struct\Attributes\AsDataCollection;
+use Cline\Struct\Attributes\Validate;
+use Cline\Struct\Support\DataCollection;
 
 /**
  * Main configuration data for the JSON-RPC package.
@@ -24,7 +24,7 @@ use Spatie\LaravelData\DataCollection;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class ConfigurationData extends AbstractData
+final readonly class ConfigurationData extends AbstractData
 {
     /**
      * Create a new configuration data instance.
@@ -52,9 +52,9 @@ final class ConfigurationData extends AbstractData
     public function __construct(
         public readonly array $namespaces,
         public readonly array $paths,
-        #[Present()]
+        #[Validate('present')]
         public readonly array $resources,
-        #[DataCollectionOf(ServerData::class)]
+        #[AsDataCollection(ServerData::class)]
         public readonly DataCollection $servers,
     ) {}
 }

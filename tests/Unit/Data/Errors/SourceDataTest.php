@@ -12,7 +12,7 @@ use Cline\RPC\Data\Errors\SourceData;
 describe('SourceData', function (): void {
     describe('Happy Paths', function (): void {
         test('creates instance with pointer', function (): void {
-            $data = SourceData::from([
+            $data = SourceData::create([
                 'pointer' => '/data/attributes/email',
             ]);
 
@@ -21,7 +21,7 @@ describe('SourceData', function (): void {
         });
 
         test('creates instance with parameter', function (): void {
-            $data = SourceData::from([
+            $data = SourceData::create([
                 'parameter' => 'userId',
             ]);
 
@@ -30,7 +30,7 @@ describe('SourceData', function (): void {
         });
 
         test('creates instance with header', function (): void {
-            $data = SourceData::from([
+            $data = SourceData::create([
                 'header' => 'Authorization',
             ]);
 

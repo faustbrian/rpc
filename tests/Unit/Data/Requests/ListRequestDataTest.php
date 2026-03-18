@@ -11,12 +11,7 @@ use Cline\RPC\Data\Requests\ListRequestData;
 
 describe('ListRequestData', function (): void {
     test('creates instance from array', function (): void {
-        $data = ListRequestData::from([
-            'fields' => null,
-            'filters' => null,
-            'relationships' => null,
-            'sorts' => null,
-        ]);
+        $data = ListRequestData::create([]);
         expect($data)->toBeInstanceOf(ListRequestData::class);
     });
 });

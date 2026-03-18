@@ -268,7 +268,7 @@ final class AbstractModelResourceTest extends TestCase
     public function creates_query_builder_with_request_parameters(): void
     {
         // Arrange
-        $request = RequestObjectData::from([
+        $request = RequestObjectData::create([
             'jsonrpc' => '2.0',
             'id' => '1',
             'method' => 'users.list',

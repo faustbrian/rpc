@@ -10,8 +10,8 @@
 use Cline\RPC\Clients\Client;
 use Cline\RPC\Data\RequestObjectData;
 use Cline\RPC\Data\ResponseData;
+use Cline\Struct\Support\DataCollection;
 use Illuminate\Support\Facades\Http;
-use Spatie\LaravelData\DataCollection;
 
 describe('Client', function (): void {
     describe('Happy Paths', function (): void {
@@ -42,7 +42,7 @@ describe('Client', function (): void {
         test('adds request to batch', function (): void {
             // Arrange
             $client = Client::create('https://api.example.com');
-            $request = RequestObjectData::from([
+            $request = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'method' => 'test.method',
                 'params' => ['param' => 'value'],
@@ -67,7 +67,7 @@ describe('Client', function (): void {
             ]);
 
             $client = Client::create('https://api.example.com');
-            $request = RequestObjectData::from([
+            $request = RequestObjectData::create([
                 'jsonrpc' => '2.0',
                 'method' => 'test.method',
                 'params' => ['param' => 'value'],
@@ -104,13 +104,13 @@ describe('Client', function (): void {
 
             $client = Client::create('https://api.example.com');
             $requests = [
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'method' => 'test.method1',
                     'params' => ['param' => 'value1'],
                     'id' => 1,
                 ]),
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'method' => 'test.method2',
                     'params' => ['param' => 'value2'],
@@ -126,15 +126,15 @@ describe('Client', function (): void {
             expect($response)->toHaveCount(2);
             expect($response->first())->toBeInstanceOf(ResponseData::class);
             expect($response->first()->id)->toBe(1);
-            expect($response->last())->toBeInstanceOf(ResponseData::class);
-            expect($response->last()->id)->toBe(2);
+            expect($response->all()[1])->toBeInstanceOf(ResponseData::class);
+            expect($response->all()[1]->id)->toBe(2);
         });
 
         test('addMany returns client instance for method chaining', function (): void {
             // Arrange
             $client = Client::create('https://api.example.com');
             $requests = [
-                RequestObjectData::from([
+                RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'method' => 'test.method',
                     'params' => ['param' => 'value'],
@@ -422,8 +422,8 @@ describe('Client', function (): void {
             expect($responses)->toBeInstanceOf(DataCollection::class);
             expect($responses)->toHaveCount(2);
             expect($responses->first()->isSuccessful())->toBeTrue();
-            expect($responses->last()->isSuccessful())->toBeFalse();
-            expect($responses->last()->error->code)->toBe(-32_602);
+            expect($responses->all()[1]->isSuccessful())->toBeFalse();
+            expect($responses->all()[1]->error->code)->toBe(-32_602);
         });
     });
 
@@ -633,7 +633,7 @@ describe('Client', function (): void {
             expect($responses)->toBeInstanceOf(DataCollection::class);
             expect($responses)->toHaveCount(100);
             expect($responses->first()->id)->toBe(1);
-            expect($responses->last()->id)->toBe(100);
+            expect($responses->all()[99]->id)->toBe(100);
         });
 
         test('handles request with different host configurations', function (): void {

@@ -67,6 +67,6 @@ final readonly class ModelNormalizer
             }
         }
 
-        return ResourceObjectData::from($pendingResourceObject);
+        return ResourceObjectData::create($pendingResourceObject);
     }
 }

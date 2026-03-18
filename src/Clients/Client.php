@@ -15,9 +15,9 @@ use Cline\RPC\Data\RequestObjectData;
 use Cline\RPC\Data\ResponseData;
 use Cline\RPC\Protocols\JsonRpcProtocol;
 use Cline\RPC\Protocols\XmlRpcProtocol;
+use Cline\Struct\Support\DataCollection;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
-use Spatie\LaravelData\DataCollection;
 
 use function count;
 
@@ -152,10 +152,10 @@ final class Client
         $response = $this->protocol->decodeResponse($httpResponse->body());
 
         if ($this->isBatch()) {
-            return ResponseData::collect($response, DataCollection::class);
+            return new DataCollection(ResponseData::collect($response));
         }
 
-        return ResponseData::from($response);
+        return ResponseData::create($response);
     }
 
     /**

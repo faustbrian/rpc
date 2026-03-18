@@ -132,7 +132,11 @@ final readonly class RequestHandler
                 try {
                     $this->validate($requestObject);
 
-                    $requestObject = RequestObjectData::from($requestObject);
+                    if (($requestObject['params'] ?? null) === null) {
+                        unset($requestObject['params']);
+                    }
+
+                    $requestObject = RequestObjectData::create($requestObject);
 
                     $method = Server::getMethodRepository()->get($requestObject->method);
 
@@ -147,7 +151,7 @@ final readonly class RequestHandler
                         new CallMethod($method, $requestObject),
                     );
                 } catch (Throwable $exception) {
-                    $responses[] = ResponseData::from([
+                    $responses[] = ResponseData::create([
                         'jsonrpc' => '2.0',
                         'id' => data_get($requestObject, 'id'),
                         'error' => ExceptionMapper::execute($exception)->toError(),
@@ -156,26 +160,26 @@ final readonly class RequestHandler
             }
 
             if (count($responses) < 1) {
-                return RequestResultData::from([
+                return RequestResultData::create([
                     'data' => $responses,
                     'statusCode' => 200,
                 ]);
             }
 
             if ($requestBody->isBatch) {
-                return RequestResultData::from([
+                return RequestResultData::create([
                     'data' => $responses,
                     'statusCode' => 200,
                 ]);
             }
 
-            return RequestResultData::from([
+            return RequestResultData::create([
                 'data' => $responses[0],
                 'statusCode' => 200,
             ]);
         } catch (Throwable $throwable) {
             if ($throwable instanceof AbstractRequestException) {
-                return RequestResultData::from([
+                return RequestResultData::create([
                     'data' => ResponseData::createFromRequestException($throwable),
                     'statusCode' => 400,
                 ]);
@@ -183,20 +187,20 @@ final readonly class RequestHandler
 
             // @codeCoverageIgnoreStart
             if ($throwable instanceof AuthenticationException) {
-                return RequestResultData::from([
+                return RequestResultData::create([
                     'data' => ResponseData::createFromRequestException(UnauthorizedException::create()),
                     'statusCode' => 401,
                 ]);
             }
 
             if ($throwable instanceof AuthorizationException) {
-                return RequestResultData::from([
+                return RequestResultData::create([
                     'data' => ResponseData::createFromRequestException(ForbiddenException::create()),
                     'statusCode' => 403,
                 ]);
             }
 
-            return RequestResultData::from([
+            return RequestResultData::create([
                 'data' => ResponseData::createFromRequestException(
                     InternalErrorException::create($throwable),
                 ),
@@ -262,13 +266,13 @@ final readonly class RequestHandler
         /** @var array<array-key, mixed> $requestObjects */
         // Single request if array is associative, batch if numeric
         if (Arr::isAssoc($requestObjects)) {
-            return RequestData::from([
+            return RequestData::create([
                 'requestObjects' => [$requestObjects],
                 'isBatch' => false,
             ]);
         }
 
-        return RequestData::from([
+        return RequestData::create([
             'requestObjects' => $requestObjects,
             'isBatch' => true,
         ]);

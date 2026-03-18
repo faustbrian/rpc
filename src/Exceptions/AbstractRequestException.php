@@ -119,7 +119,7 @@ abstract class AbstractRequestException extends Exception implements ProvidesSol
      */
     public function toError(): ErrorData
     {
-        return ErrorData::from($this->toArray());
+        return ErrorData::create($this->toArray());
     }
 
     /**
@@ -182,7 +182,7 @@ abstract class AbstractRequestException extends Exception implements ProvidesSol
     {
         // @phpstan-ignore-next-line
         return new static(
-            ErrorData::from([
+            ErrorData::create([
                 'code' => $code,
                 'message' => $message,
                 'data' => $data,

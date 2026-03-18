@@ -9,11 +9,19 @@
 
 namespace Cline\RPC\JsonSchema;
 
-use Spatie\LaravelData\Data;
+use Cline\Struct\Metadata\MetadataFactory;
+use Cline\Struct\AbstractData as Data;
+use Cline\Struct\Validation\RuleInferrer;
+use Error;
 
 use function array_merge;
+use function array_values;
+use function class_exists;
 use function explode;
+use function is_a;
+use function is_object;
 use function is_string;
+use function resolve;
 
 /**
  * Transforms complete validation rule sets into JSON Schema documents.
@@ -93,6 +101,54 @@ final class RulesTransformer
      */
     public static function transformDataObject(string $data, array $properties = []): array
     {
-        return self::transform($data::getValidationRules([]), $properties);
+        if (!class_exists($data) || !is_a($data, Data::class, true)) {
+            throw new Error(sprintf(
+                'Class [%s] must exist and extend [%s].',
+                $data,
+                Data::class,
+            ));
+        }
+
+        /** @var MetadataFactory $metadataFactory */
+        $metadataFactory = resolve(MetadataFactory::class);
+        /** @var RuleInferrer $ruleInferrer */
+        $ruleInferrer = resolve(RuleInferrer::class);
+
+        return self::transform(
+            self::normalizeRules($ruleInferrer->infer($metadataFactory->for($data))),
+            $properties,
+        );
+    }
+
+    /**
+     * @param  array<string, array<int, mixed>> $rules
+     * @return array<string, array<int, mixed>>
+     */
+    private static function normalizeRules(array $rules): array
+    {
+        $normalized = [];
+
+        foreach ($rules as $field => $fieldRules) {
+            $seen = [];
+
+            foreach ($fieldRules as $rule) {
+                if ($rule === 'sometimes') {
+                    continue;
+                }
+
+                $key = is_object($rule) ? spl_object_hash($rule) : (string) $rule;
+
+                if (isset($seen[$key])) {
+                    continue;
+                }
+
+                $seen[$key] = true;
+                $normalized[$field][] = $rule;
+            }
+
+            $normalized[$field] = array_values($normalized[$field] ?? []);
+        }
+
+        return $normalized;
     }
 }

@@ -77,11 +77,11 @@ final class MethodWithParams extends AbstractMethod
     public function getParams(): array
     {
         return [
-            ContentDescriptorValue::from([
+            ContentDescriptorValue::create([
                 'name' => 'userId',
                 'schema' => ['type' => 'integer'],
             ]),
-            ContentDescriptorValue::from([
+            ContentDescriptorValue::create([
                 'name' => 'email',
                 'schema' => ['type' => 'string'],
             ]),
@@ -103,7 +103,7 @@ final class MethodWithResult extends AbstractMethod
 {
     public function getResult(): ContentDescriptorValue
     {
-        return ContentDescriptorValue::from([
+        return ContentDescriptorValue::create([
             'name' => 'UserData',
             'schema' => [
                 'type' => 'object',
@@ -393,7 +393,7 @@ describe('AbstractMethod', function (): void {
             test('stores request object for later access', function (): void {
                 // Arrange
                 $method = new ConcreteTestMethod();
-                $requestObject = RequestObjectData::from([
+                $requestObject = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '123',
                     'method' => 'test.method',
@@ -417,11 +417,10 @@ describe('AbstractMethod', function (): void {
             test('accepts request with null params', function (): void {
                 // Arrange
                 $method = new ConcreteTestMethod();
-                $requestObject = RequestObjectData::from([
+                $requestObject = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => 'abc-123',
                     'method' => 'test.noParams',
-                    'params' => null,
                 ]);
 
                 // Act
@@ -439,7 +438,7 @@ describe('AbstractMethod', function (): void {
             test('accepts request with nested params structure', function (): void {
                 // Arrange
                 $method = new ConcreteTestMethod();
-                $requestObject = RequestObjectData::from([
+                $requestObject = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '456',
                     'method' => 'test.nested',
@@ -512,17 +511,15 @@ describe('AbstractMethod', function (): void {
             test('allows overwriting previous request object', function (): void {
                 // Arrange
                 $method = new ConcreteTestMethod();
-                $firstRequest = RequestObjectData::from([
+                $firstRequest = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '1',
                     'method' => 'first.method',
-                    'params' => null,
                 ]);
-                $secondRequest = RequestObjectData::from([
+                $secondRequest = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => '2',
                     'method' => 'second.method',
-                    'params' => null,
                 ]);
 
                 // Act
@@ -633,7 +630,7 @@ describe('AbstractMethod', function (): void {
                         $params = [];
 
                         for ($i = 1; $i <= 20; ++$i) {
-                            $params[] = ContentDescriptorValue::from([
+                            $params[] = ContentDescriptorValue::create([
                                 'name' => 'param'.$i,
                                 'schema' => ['type' => 'string'],
                             ]);
@@ -769,11 +766,10 @@ describe('AbstractMethod', function (): void {
             test('handles request with numeric id', function (): void {
                 // Arrange
                 $method = new ConcreteTestMethod();
-                $requestObject = RequestObjectData::from([
+                $requestObject = RequestObjectData::create([
                     'jsonrpc' => '2.0',
                     'id' => 42,
                     'method' => 'test.method',
-                    'params' => null,
                 ]);
 
                 // Act

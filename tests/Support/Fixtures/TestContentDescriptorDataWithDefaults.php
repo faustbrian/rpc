@@ -11,8 +11,7 @@ namespace Tests\Support\Fixtures;
 
 use Cline\RPC\Data\AbstractContentDescriptorData;
 use Override;
-use Spatie\LaravelData\Attributes\Validation\Required;
-use Spatie\LaravelData\Attributes\Validation\StringType;
+use Cline\Struct\Attributes\Validate;
 
 /**
  * Test implementation with custom default content descriptors.
@@ -23,7 +22,7 @@ use Spatie\LaravelData\Attributes\Validation\StringType;
  * @author Brian Faust <brian@cline.sh>
  * @internal
  */
-final class TestContentDescriptorDataWithDefaults extends AbstractContentDescriptorData
+final readonly class TestContentDescriptorDataWithDefaults extends AbstractContentDescriptorData
 {
     /**
      * Create a new test content descriptor data with defaults instance.
@@ -31,7 +30,7 @@ final class TestContentDescriptorDataWithDefaults extends AbstractContentDescrip
      * @param string $title Required title field for testing
      */
     public function __construct(
-        #[Required(), StringType()]
+        #[Validate(['required', 'string'])]
         public readonly string $title,
     ) {}
 

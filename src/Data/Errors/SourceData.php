@@ -23,7 +23,7 @@ use Cline\RPC\Data\AbstractData;
  * @see https://jsonapi.org/format/#error-objects
  * @see https://datatracker.ietf.org/doc/html/rfc6901
  */
-final class SourceData extends AbstractData
+final readonly class SourceData extends AbstractData
 {
     /**
      * Create a new error source information object.

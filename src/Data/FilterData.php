@@ -18,7 +18,7 @@ namespace Cline\RPC\Data;
  *
  * @author Brian Faust <brian@cline.sh>
  */
-final class FilterData extends AbstractData
+final readonly class FilterData extends AbstractData
 {
     /**
      * Create a new filter data instance.
