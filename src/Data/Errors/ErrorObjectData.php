@@ -20,6 +20,7 @@ use Cline\RPC\Data\AbstractData;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://jsonapi.org/format/#error-objects
+ * @psalm-immutable
  */
 final readonly class ErrorObjectData extends AbstractData
 {
@@ -52,13 +53,13 @@ final readonly class ErrorObjectData extends AbstractData
      *                                          stack traces, request IDs, or debugging context
      */
     public function __construct(
-        public readonly string $id,
-        public readonly ?LinksData $links,
-        public readonly string $status,
-        public readonly string $code,
-        public readonly string $title,
-        public readonly string $detail,
-        public readonly ?SourceData $source,
-        public readonly ?array $meta = null,
+        public string $id,
+        public ?LinksData $links,
+        public string $status,
+        public string $code,
+        public string $title,
+        public string $detail,
+        public ?SourceData $source,
+        public ?array $meta = null,
     ) {}
 }

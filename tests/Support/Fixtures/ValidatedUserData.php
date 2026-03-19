@@ -9,8 +9,8 @@
 
 namespace Tests\Support\Fixtures;
 
-use Cline\Struct\Attributes\Validate;
 use Cline\Struct\AbstractData as Data;
+use Cline\Struct\Attributes\Validate;
 
 /**
  * Test fixture for Data object parameter validation in CallMethod tests.
@@ -18,15 +18,16 @@ use Cline\Struct\AbstractData as Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class ValidatedUserData extends Data
 {
     public function __construct(
         #[Validate(['required', 'max:100', 'min:3'])]
-        public readonly string $name,
+        public string $name,
         #[Validate(['required', 'email'])]
-        public readonly string $email,
+        public string $email,
         #[Validate(['max:150', 'min:1'])]
-        public readonly ?int $age = null,
+        public ?int $age = null,
     ) {}
 }

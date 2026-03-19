@@ -17,12 +17,13 @@ use Cline\Struct\AbstractData as Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class PostsData extends Data
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $title,
-        public readonly string $content,
+        public int $id,
+        public string $title,
+        public string $content,
     ) {}
 }

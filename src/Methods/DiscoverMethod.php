@@ -23,11 +23,12 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Override;
 
-use function assert;
-use function collect;
 use function is_array;
 use function is_bool;
 use function is_numeric;
+use function is_object;
+use function is_string;
+use function method_exists;
 
 /**
  * Implements the standard OpenRPC service discovery method.
@@ -117,6 +118,64 @@ final class DiscoverMethod extends AbstractMethod implements UnwrappedResponseIn
             ];
         }
 
+        $contentDescriptors = [];
+
+        foreach (Facade::getContentDescriptors() as $descriptor) {
+            if ($descriptor instanceof ContentDescriptorValue) {
+                $contentDescriptors[$descriptor->name] = $descriptor;
+
+                continue;
+            }
+
+            if (!is_array($descriptor)) {
+                continue;
+            }
+
+            if (!isset($descriptor['name'])) {
+                continue;
+            }
+
+            if (!is_string($descriptor['name'])) {
+                continue;
+            }
+
+            $contentDescriptors[$descriptor['name']] = $descriptor;
+        }
+
+        $schemas = [];
+
+        foreach (Facade::getSchemas() as $schema) {
+            if (is_array($schema) && isset($schema['name'], $schema['data']) && is_string($schema['name'])) {
+                $schemas[$schema['name']] = $schema['data'];
+
+                continue;
+            }
+
+            if (!is_object($schema)) {
+                continue;
+            }
+
+            if (!method_exists($schema, 'toArray')) {
+                continue;
+            }
+
+            $schemaArray = $schema->toArray();
+
+            if (!is_array($schemaArray)) {
+                continue;
+            }
+
+            foreach ($schemaArray as $name => $definition) {
+                $schemas[$name] = $definition;
+            }
+        }
+
+        $errorDefinitions = [];
+
+        foreach ($errors as $error) {
+            $errorDefinitions[$error['message']] = $error;
+        }
+
         $document = self::arr_filter_recursive([
             'openrpc' => '1.3.2',
             'info' => [
@@ -132,37 +191,16 @@ final class DiscoverMethod extends AbstractMethod implements UnwrappedResponseIn
             ],
             'methods' => $methods,
             'components' => [
-                'contentDescriptors' => collect(Facade::getContentDescriptors())
-                    ->mapWithKeys(function (ContentDescriptorValue|array $descriptor): array {
-                        if ($descriptor instanceof ContentDescriptorValue) {
-                            return [$descriptor->name => $descriptor];
-                        }
-
-                        return [$descriptor['name'] => $descriptor];
-                    })
-                    ->all(),
-                'schemas' => collect(Facade::getSchemas())
-                    ->mapWithKeys(function ($schema): array {
-                        if (is_array($schema)) {
-                            return [$schema['name'] => $schema['data']];
-                        }
-
-                        return $schema->toArray();
-                    })
-                    ->all(),
-                'errors' => collect($errors)
-                    ->mapWithKeys(fn (array $error): array => [$error['message'] => $error])
-                    ->all(),
+                'contentDescriptors' => $contentDescriptors,
+                'schemas' => $schemas,
+                'errors' => $errorDefinitions,
             ],
         ]);
 
         // FIXME: the JSON Schema 'enum' keyword blows up the validator
         // $this->validateSchema(\json_encode($document, \JSON_THROW_ON_ERROR));
 
-        $result = DocumentValue::create($document)->toArray();
-        assert(is_array($result));
-
-        return $result;
+        return DocumentValue::create($document)->toArray();
     }
 
     /**

@@ -9,19 +9,22 @@
 
 namespace Cline\RPC\JsonSchema;
 
+use Cline\Struct\AbstractData;
 use Cline\Struct\Metadata\MetadataFactory;
-use Cline\Struct\AbstractData as Data;
 use Cline\Struct\Validation\RuleInferrer;
 use Error;
 
+use function array_filter;
 use function array_merge;
 use function array_values;
 use function class_exists;
 use function explode;
-use function is_a;
 use function is_object;
 use function is_string;
 use function resolve;
+use function serialize;
+use function spl_object_hash;
+use function sprintf;
 
 /**
  * Transforms complete validation rule sets into JSON Schema documents.
@@ -49,9 +52,9 @@ final class RulesTransformer
      * // Returns complete JSON Schema with all fields and constraints
      * ```
      *
-     * @param  array<string, array<int, object|string>|string> $rules      Laravel validation rules keyed by field name
-     * @param  array<string, array<string, mixed>>             $properties Additional schema properties to merge for each field
-     * @return array<string, mixed>                            Complete JSON Schema object with type, properties, and required fields
+     * @param  array<string, array<int, mixed>|string> $rules      Laravel validation rules keyed by field name
+     * @param  array<string, array<string, mixed>>     $properties Additional schema properties to merge for each field
+     * @return array<string, mixed>                    Complete JSON Schema object with type, properties, and required fields
      */
     public static function transform(array $rules, array $properties = []): array
     {
@@ -63,7 +66,12 @@ final class RulesTransformer
 
         foreach ($rules as $field => $fieldRules) {
             $parsedRules = is_string($fieldRules) ? explode('|', $fieldRules) : $fieldRules;
+            $parsedRules = array_values(array_filter(
+                $parsedRules,
+                static fn (mixed $rule): bool => is_string($rule) || is_object($rule),
+            ));
 
+            /** @var array<int, object|string> $parsedRules */
             $fieldSchema = RuleTransformer::transform($field, $parsedRules);
 
             if ($fieldSchema === []) {
@@ -95,22 +103,23 @@ final class RulesTransformer
      * by extracting their validation rules and processing them through the
      * standard transformation pipeline.
      *
-     * @param  class-string<Data>                  $data       The Laravel Data class to transform
+     * @param  class-string<AbstractData>          $data       The Laravel Data class to transform
      * @param  array<string, array<string, mixed>> $properties Additional schema properties to merge
      * @return array<string, mixed>                Complete JSON Schema object derived from the Data class
      */
     public static function transformDataObject(string $data, array $properties = []): array
     {
-        if (!class_exists($data) || !is_a($data, Data::class, true)) {
+        if (!class_exists($data)) {
             throw new Error(sprintf(
                 'Class [%s] must exist and extend [%s].',
                 $data,
-                Data::class,
+                AbstractData::class,
             ));
         }
 
         /** @var MetadataFactory $metadataFactory */
         $metadataFactory = resolve(MetadataFactory::class);
+
         /** @var RuleInferrer $ruleInferrer */
         $ruleInferrer = resolve(RuleInferrer::class);
 
@@ -136,7 +145,7 @@ final class RulesTransformer
                     continue;
                 }
 
-                $key = is_object($rule) ? spl_object_hash($rule) : (string) $rule;
+                $key = is_object($rule) ? spl_object_hash($rule) : serialize($rule);
 
                 if (isset($seen[$key])) {
                     continue;
@@ -145,8 +154,6 @@ final class RulesTransformer
                 $seen[$key] = true;
                 $normalized[$field][] = $rule;
             }
-
-            $normalized[$field] = array_values($normalized[$field] ?? []);
         }
 
         return $normalized;

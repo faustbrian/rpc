@@ -20,6 +20,7 @@ use Cline\Struct\Attributes\Validate;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class SimpleTestData extends AbstractData
 {
@@ -34,6 +35,6 @@ final readonly class SimpleTestData extends AbstractData
      */
     public function __construct(
         #[Validate(['required', 'string'])]
-        public readonly string $name,
+        public string $name,
     ) {}
 }

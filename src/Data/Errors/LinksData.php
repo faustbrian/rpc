@@ -20,6 +20,7 @@ use Cline\RPC\Data\AbstractData;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://jsonapi.org/format/#error-objects
+ * @psalm-immutable
  */
 final readonly class LinksData extends AbstractData
 {
@@ -34,7 +35,7 @@ final readonly class LinksData extends AbstractData
      *                           that describe the error in detail
      */
     public function __construct(
-        public readonly ?string $about,
-        public readonly ?string $type,
+        public ?string $about,
+        public ?string $type,
     ) {}
 }

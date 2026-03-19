@@ -23,6 +23,7 @@ use Cline\RPC\JsonSchema\RulesTransformer;
  * definitions for use in API documentation and validation.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 abstract readonly class AbstractContentDescriptorData extends AbstractData
 {

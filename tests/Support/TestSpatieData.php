@@ -15,12 +15,13 @@ use Cline\Struct\AbstractData as Data;
  * Test implementation of Spatie Data for unit testing.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class TestSpatieData extends Data
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $name,
-        public readonly string $email,
+        public int $id,
+        public string $name,
+        public string $email,
     ) {}
 }

@@ -23,6 +23,7 @@ use Cline\Struct\Support\DataCollection;
  * throughout the application lifecycle.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class ConfigurationData extends AbstractData
 {
@@ -50,11 +51,11 @@ final readonly class ConfigurationData extends AbstractData
      *                                                    with its own method set and configuration.
      */
     public function __construct(
-        public readonly array $namespaces,
-        public readonly array $paths,
+        public array $namespaces,
+        public array $paths,
         #[Validate('present')]
-        public readonly array $resources,
+        public array $resources,
         #[AsDataCollection(ServerData::class)]
-        public readonly DataCollection $servers,
+        public DataCollection $servers,
     ) {}
 }

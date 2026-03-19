@@ -19,6 +19,7 @@ use Cline\RPC\Data\AbstractData;
  * operations to control the ordering of returned resource collections.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class SortData extends AbstractData
 {
@@ -35,7 +36,7 @@ final readonly class SortData extends AbstractData
      *                          the specified attribute.
      */
     public function __construct(
-        public readonly string $attribute,
-        public readonly string $direction,
+        public string $attribute,
+        public string $direction,
     ) {}
 }

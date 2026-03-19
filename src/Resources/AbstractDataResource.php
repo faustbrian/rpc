@@ -9,9 +9,9 @@
 
 namespace Cline\RPC\Resources;
 
+use Cline\Struct\AbstractData as Data;
 use Illuminate\Support\Str;
 use Override;
-use Cline\Struct\AbstractData as Data;
 
 use function class_basename;
 use function data_get;

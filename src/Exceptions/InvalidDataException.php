@@ -39,9 +39,9 @@ final class InvalidDataException extends AbstractRequestException
      *                                                                error format with pointer references
      *                                                                to specific fields in the request
      *                                                                data payload.
-     * @return self                a new instance containing all validation errors formatted as JSON-RPC
-     *                             error objects, each with HTTP 422 status, JSON Pointer source location
-     *                             (/params/data/{attribute}), and the specific validation message
+     * @return self                                        a new instance containing all validation errors formatted as JSON-RPC
+     *                                                     error objects, each with HTTP 422 status, JSON Pointer source location
+     *                                                     (/params/data/{attribute}), and the specific validation message
      */
     public static function create(DataValidationException|ValidationException $exception): self
     {

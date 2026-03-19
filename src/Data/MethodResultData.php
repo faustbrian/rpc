@@ -22,6 +22,7 @@ use Override;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#response_object
+ * @psalm-immutable
  */
 final readonly class MethodResultData extends AbstractData
 {
@@ -39,9 +40,9 @@ final readonly class MethodResultData extends AbstractData
      *                        implementation and API contract.
      */
     public function __construct(
-        public readonly string $jsonrpc,
-        public readonly mixed $id,
-        public readonly mixed $result,
+        public string $jsonrpc,
+        public mixed $id,
+        public mixed $result,
     ) {}
 
     /**
@@ -60,8 +61,7 @@ final readonly class MethodResultData extends AbstractData
         array $groups = [],
         array $context = [],
         ?SerializationOptions $serialization = null,
-    ): array
-    {
+    ): array {
         return [
             'jsonrpc' => $this->jsonrpc,
             'id' => $this->id,

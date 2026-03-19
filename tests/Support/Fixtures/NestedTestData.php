@@ -21,6 +21,7 @@ use Cline\Struct\Attributes\Validate;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class NestedTestData extends AbstractData
 {
@@ -42,10 +43,10 @@ final readonly class NestedTestData extends AbstractData
      */
     public function __construct(
         #[Validate(['required', 'min:1', 'string'])]
-        public readonly string $title,
+        public string $title,
         #[Validate('required')]
-        public readonly SimpleTestData $author,
+        public SimpleTestData $author,
         #[Validate(['nullable', 'array'])]
-        public readonly ?array $tags = null,
+        public ?array $tags = null,
     ) {}
 }

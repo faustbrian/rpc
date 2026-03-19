@@ -17,6 +17,7 @@ namespace Cline\RPC\Data;
  * Used to build complex query filters for JSON-RPC method parameters.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class FilterData extends AbstractData
 {
@@ -35,8 +36,8 @@ final readonly class FilterData extends AbstractData
      *                          operator being applied.
      */
     public function __construct(
-        public readonly string $attribute,
-        public readonly string $condition,
-        public readonly mixed $value,
+        public string $attribute,
+        public string $condition,
+        public mixed $value,
     ) {}
 }

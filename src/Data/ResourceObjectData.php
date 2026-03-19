@@ -17,6 +17,7 @@ namespace Cline\RPC\Data;
  * Used to structure API responses in a standardized, JSON:API-compliant format.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class ResourceObjectData extends AbstractData
 {
@@ -40,9 +41,9 @@ final readonly class ResourceObjectData extends AbstractData
      *                                                 available for the resource.
      */
     public function __construct(
-        public readonly string $type,
-        public readonly string $id,
-        public readonly array $attributes,
-        public readonly ?array $relationships = null,
+        public string $type,
+        public string $id,
+        public array $attributes,
+        public ?array $relationships = null,
     ) {}
 }

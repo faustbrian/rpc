@@ -19,6 +19,7 @@ use Cline\RPC\Data\AbstractData;
  * Used in list request operations to build complex query filtering conditions.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class FilterData extends AbstractData
 {
@@ -40,9 +41,9 @@ final readonly class FilterData extends AbstractData
      *                               or when no chaining logic is needed. Controls query clause grouping.
      */
     public function __construct(
-        public readonly string $attribute,
-        public readonly string $value,
-        public readonly string $operator,
-        public readonly ?string $boolean,
+        public string $attribute,
+        public string $value,
+        public string $operator,
+        public ?string $boolean,
     ) {}
 }

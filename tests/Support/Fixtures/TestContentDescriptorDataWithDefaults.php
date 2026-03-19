@@ -10,8 +10,8 @@
 namespace Tests\Support\Fixtures;
 
 use Cline\RPC\Data\AbstractContentDescriptorData;
-use Override;
 use Cline\Struct\Attributes\Validate;
+use Override;
 
 /**
  * Test implementation with custom default content descriptors.
@@ -21,6 +21,7 @@ use Cline\Struct\Attributes\Validate;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class TestContentDescriptorDataWithDefaults extends AbstractContentDescriptorData
 {
@@ -31,7 +32,7 @@ final readonly class TestContentDescriptorDataWithDefaults extends AbstractConte
      */
     public function __construct(
         #[Validate(['required', 'string'])]
-        public readonly string $title,
+        public string $title,
     ) {}
 
     /**

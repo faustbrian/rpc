@@ -17,11 +17,12 @@ use Cline\Struct\AbstractData as Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class DataWithoutId extends Data
 {
     public function __construct(
-        public readonly string $name,
-        public readonly string $value,
+        public string $name,
+        public string $value,
     ) {}
 }

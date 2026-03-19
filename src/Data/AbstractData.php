@@ -10,6 +10,7 @@
 namespace Cline\RPC\Data;
 
 use Cline\Struct\AbstractData as StructData;
+use Cline\Struct\Serialization\SerializationOptions;
 use Override;
 
 use function is_array;
@@ -26,6 +27,7 @@ use function is_array;
  * maintain consistent serialization behavior across the application.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 abstract readonly class AbstractData extends StructData
 {
@@ -45,9 +47,8 @@ abstract readonly class AbstractData extends StructData
         array $exclude = [],
         array $groups = [],
         array $context = [],
-        ?\Cline\Struct\Serialization\SerializationOptions $serialization = null,
-    ): array
-    {
+        ?SerializationOptions $serialization = null,
+    ): array {
         /** @var array<string, mixed> $array */
         $array = parent::toArray(
             $includeSensitive,

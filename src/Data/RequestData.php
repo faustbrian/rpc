@@ -19,6 +19,7 @@ namespace Cline\RPC\Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#batch
+ * @psalm-immutable
  */
 final readonly class RequestData extends AbstractData
 {
@@ -36,7 +37,7 @@ final readonly class RequestData extends AbstractData
      *                                                                                                                                     network overhead and enabling transactional semantics.
      */
     public function __construct(
-        public readonly array $requestObjects,
-        public readonly bool $isBatch,
+        public array $requestObjects,
+        public bool $isBatch,
     ) {}
 }

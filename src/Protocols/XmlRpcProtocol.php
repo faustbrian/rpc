@@ -194,7 +194,7 @@ final readonly class XmlRpcProtocol implements ProtocolInterface, SerializerInte
             assert(is_array($methodResponse));
 
             // Handle fault
-            if (is_array($methodResponse['fault'] ?? null) && array_key_exists('fault', $methodResponse)) {
+            if (isset($methodResponse['fault']) && is_array($methodResponse['fault'])) {
                 $faultData = $methodResponse['fault'];
                 assert(is_array($faultData));
                 $fault = $this->decodeValue($faultData['value'] ?? []);

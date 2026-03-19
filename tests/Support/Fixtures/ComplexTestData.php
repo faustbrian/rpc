@@ -21,6 +21,7 @@ use Cline\Struct\Attributes\Validate;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class ComplexTestData extends AbstractData
 {
@@ -41,12 +42,12 @@ final readonly class ComplexTestData extends AbstractData
      */
     public function __construct(
         #[Validate(['required', 'max:255', 'min:2', 'string'])]
-        public readonly string $name,
+        public string $name,
         #[Validate(['required', 'email', 'max:255'])]
-        public readonly string $email,
+        public string $email,
         #[Validate(['nullable', 'integer', 'max:150', 'min:0'])]
-        public readonly ?int $age = null,
+        public ?int $age = null,
         #[Validate(['nullable', 'max:1000', 'string'])]
-        public readonly ?string $bio = null,
+        public ?string $bio = null,
     ) {}
 }

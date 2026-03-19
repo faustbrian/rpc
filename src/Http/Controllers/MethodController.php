@@ -10,10 +10,10 @@
 namespace Cline\RPC\Http\Controllers;
 
 use Cline\RPC\Requests\RequestHandler;
+use Cline\Struct\AbstractData as Data;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Cline\Struct\AbstractData as Data;
 
 /**
  * HTTP controller for handling JSON-RPC method invocations.

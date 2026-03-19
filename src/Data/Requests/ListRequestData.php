@@ -21,6 +21,7 @@ use Cline\Struct\Support\DataCollection;
  * and sorting. Follows JSON:API conventions for resource collection queries.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class ListRequestData extends AbstractData
 {
@@ -47,11 +48,11 @@ final readonly class ListRequestData extends AbstractData
      *                                                              Multiple sort criteria are applied in sequence.
      */
     public function __construct(
-        public readonly ?array $fields = null,
+        public ?array $fields = null,
         #[AsDataCollection(FilterData::class)]
-        public readonly ?DataCollection $filters = null,
-        public readonly ?array $relationships = null,
+        public ?DataCollection $filters = null,
+        public ?array $relationships = null,
         #[AsDataCollection(SortData::class)]
-        public readonly ?DataCollection $sorts = null,
+        public ?DataCollection $sorts = null,
     ) {}
 }

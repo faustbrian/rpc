@@ -21,6 +21,7 @@ use Cline\RPC\Data\AbstractData;
  * to provide different API versions or isolated method sets.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class ServerData extends AbstractData
 {
@@ -53,13 +54,13 @@ final readonly class ServerData extends AbstractData
      *                                                                            OpenRPC documentation generation.
      */
     public function __construct(
-        public readonly string $name,
-        public readonly string $path,
-        public readonly string $route,
-        public readonly string $version,
-        public readonly array $middleware,
-        public readonly ?array $methods = null,
-        public readonly array $content_descriptors,
-        public readonly array $schemas,
+        public string $name,
+        public string $path,
+        public string $route,
+        public string $version,
+        public array $middleware,
+        public ?array $methods = null,
+        public array $content_descriptors = [],
+        public array $schemas = [],
     ) {}
 }

@@ -21,6 +21,7 @@ namespace Cline\RPC\Data;
  * at https://jsonapi.org/format/#document-top-level.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class DocumentData extends AbstractData
 {
@@ -43,8 +44,8 @@ final readonly class DocumentData extends AbstractData
      *                                          be present with either successful or error responses.
      */
     public function __construct(
-        public readonly array $data,
-        public readonly ?array $errors = null,
-        public readonly ?array $meta = null,
+        public array $data,
+        public ?array $errors = null,
+        public ?array $meta = null,
     ) {}
 }

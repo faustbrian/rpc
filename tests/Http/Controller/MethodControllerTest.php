@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Tests\Support\Fakes\Server;
 use Tests\Support\MethodCaller;
+
 use function Pest\Laravel\call;
 
 // These tests are based on the examples from https://www.jsonrpc.org/specification
@@ -22,7 +23,7 @@ describe('MethodController', function (): void {
 
     describe('Happy Paths', function (): void {
         test('rpc.discover (OpenRPC)', function (): void {
-            $request = \file_get_contents(\realpath(__DIR__.'/../../Support/Fixtures/Requests/rpc-discover.json'));
+            $request = file_get_contents(realpath(__DIR__.'/../../Support/Fixtures/Requests/rpc-discover.json'));
 
             $response = call('POST', URL::to('/rpc'), [], [], [], [], $request)
                 ->assertOk()

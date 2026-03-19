@@ -21,6 +21,7 @@ use function in_array;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#error_object
+ * @psalm-immutable
  */
 final readonly class ErrorData extends AbstractData
 {
@@ -38,9 +39,9 @@ final readonly class ErrorData extends AbstractData
      *                        The structure is implementation-defined and may be null.
      */
     public function __construct(
-        public readonly int $code,
-        public readonly string $message,
-        public readonly mixed $data = null,
+        public int $code,
+        public string $message,
+        public mixed $data = null,
     ) {}
 
     /**

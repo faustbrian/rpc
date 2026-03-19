@@ -12,6 +12,7 @@ namespace Cline\RPC\Exceptions;
 use Illuminate\Support\Arr;
 
 use function array_diff;
+use function array_values;
 use function implode;
 use function sprintf;
 
@@ -60,20 +61,20 @@ final class InvalidSortsException extends AbstractRequestException
      */
     public static function create(array $unknownSorts, array $allowedSorts): self
     {
-        $unknownSorts = Arr::pluck($unknownSorts, 'attribute');
-        $unknownSorts = implode(', ', array_diff($unknownSorts, $allowedSorts));
-
-        $allowedSorts = implode(', ', $allowedSorts);
+        /** @var list<string> $unknownSortAttributes */
+        $unknownSortAttributes = array_values(Arr::pluck($unknownSorts, 'attribute'));
+        $unknownSortList = implode(', ', array_diff($unknownSortAttributes, $allowedSorts));
+        $allowedSortList = implode(', ', $allowedSorts);
 
         return self::new(-32_602, 'Invalid params', [
             [
                 'status' => '422',
                 'source' => ['pointer' => '/params/sorts'],
                 'title' => 'Invalid sorts',
-                'detail' => sprintf('Requested sorts `%s` is not allowed. Allowed sorts are `%s`.', $unknownSorts, $allowedSorts),
+                'detail' => sprintf('Requested sorts `%s` is not allowed. Allowed sorts are `%s`.', $unknownSortList, $allowedSortList),
                 'meta' => [
-                    'unknown' => $unknownSorts,
-                    'allowed' => $allowedSorts,
+                    'unknown' => $unknownSortList,
+                    'allowed' => $allowedSortList,
                 ],
             ],
         ]);

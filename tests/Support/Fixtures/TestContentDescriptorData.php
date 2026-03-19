@@ -21,6 +21,7 @@ use Cline\Struct\Attributes\Validate;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class TestContentDescriptorData extends AbstractContentDescriptorData
 {
@@ -32,8 +33,8 @@ final readonly class TestContentDescriptorData extends AbstractContentDescriptor
      */
     public function __construct(
         #[Validate(['required', 'email'])]
-        public readonly string $email,
+        public string $email,
         #[Validate(['required', 'string'])]
-        public readonly string $name,
+        public string $name,
     ) {}
 }

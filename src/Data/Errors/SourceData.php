@@ -22,6 +22,7 @@ use Cline\RPC\Data\AbstractData;
  * @author Brian Faust <brian@cline.sh>
  * @see https://jsonapi.org/format/#error-objects
  * @see https://datatracker.ietf.org/doc/html/rfc6901
+ * @psalm-immutable
  */
 final readonly class SourceData extends AbstractData
 {
@@ -42,8 +43,8 @@ final readonly class SourceData extends AbstractData
      *                               custom header validation failures in API requests.
      */
     public function __construct(
-        public readonly ?string $pointer,
-        public readonly ?string $parameter,
-        public readonly ?string $header,
+        public ?string $pointer,
+        public ?string $parameter,
+        public ?string $header,
     ) {}
 }

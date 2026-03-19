@@ -128,7 +128,7 @@ describe('RequestObjectData', function (): void {
 
         test('correctly identifies a non-notification request', function (): void {
             // Arrange
-            $request = new RequestObjectData('2.0', 'req-123', 'method.call', null);
+            $request = new RequestObjectData('2.0', 'req-123', 'method.call');
 
             // Act
             $isNotification = $request->isNotification();
@@ -161,7 +161,7 @@ describe('RequestObjectData', function (): void {
     describe('Sad Paths', function (): void {
         test('returns default value when getting parameter from null params', function (): void {
             // Arrange
-            $request = new RequestObjectData('2.0', 1, 'test', null);
+            $request = new RequestObjectData('2.0', 1, 'test');
             $defaultValue = 'default';
 
             // Act
@@ -185,7 +185,7 @@ describe('RequestObjectData', function (): void {
 
         test('returns null when getting params that are null', function (): void {
             // Arrange
-            $request = new RequestObjectData('2.0', 'id-null-params', 'test.null', null);
+            $request = new RequestObjectData('2.0', 'id-null-params', 'test.null');
 
             // Act
             $params = $request->getParams();
@@ -329,7 +329,7 @@ describe('RequestObjectData', function (): void {
     describe('Data Serialization', function (): void {
         test('removes null values when converting to array', function (): void {
             // Arrange
-            $request = new RequestObjectData('2.0', 'id-123', 'test.method', null);
+            $request = new RequestObjectData('2.0', 'id-123', 'test.method');
 
             // Act
             $array = $request->toArray();

@@ -18,6 +18,7 @@ namespace Cline\RPC\Data;
  * HTTP response sent back to the client.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class RequestResultData extends AbstractData
 {
@@ -39,8 +40,8 @@ final readonly class RequestResultData extends AbstractData
      *                                          application-specific headers.
      */
     public function __construct(
-        public readonly mixed $data,
-        public readonly int $statusCode,
-        public readonly array $headers = [],
+        public mixed $data,
+        public int $statusCode,
+        public array $headers = [],
     ) {}
 }

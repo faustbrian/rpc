@@ -22,6 +22,7 @@ use Override;
  * and notifications, along with helper methods for response status checks.
  *
  * @author Brian Faust <brian@cline.sh>
+ * @psalm-immutable
  */
 final readonly class ResponseData extends AbstractData
 {
@@ -42,10 +43,10 @@ final readonly class ResponseData extends AbstractData
      *                                exclusive with the result property per JSON-RPC 2.0 specification.
      */
     public function __construct(
-        public readonly string $jsonrpc,
-        public readonly mixed $id = null,
-        public readonly mixed $result = null,
-        public readonly ?ErrorData $error = null,
+        public string $jsonrpc,
+        public mixed $id = null,
+        public mixed $result = null,
+        public ?ErrorData $error = null,
     ) {}
 
     /**
@@ -173,8 +174,7 @@ final readonly class ResponseData extends AbstractData
         array $groups = [],
         array $context = [],
         ?SerializationOptions $serialization = null,
-    ): array
-    {
+    ): array {
         if (!$this->error instanceof ErrorData) {
             return [
                 'jsonrpc' => $this->jsonrpc,

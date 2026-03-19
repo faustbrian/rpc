@@ -15,6 +15,7 @@ use Cline\RPC\Data\RequestObjectData;
 use Cline\RPC\Data\ResponseData;
 use Cline\RPC\Exceptions\ExceptionMapper;
 use Cline\RPC\Exceptions\InvalidDataException;
+use Cline\Struct\AbstractData as Data;
 use Cline\Struct\Exceptions\DataValidationException;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -24,12 +25,11 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use ReflectionClass;
 use ReflectionNamedType;
-use Cline\Struct\AbstractData as Data;
 use Throwable;
 
 use function array_filter;
-use function call_user_func;
 use function count;
+use function is_array;
 use function is_subclass_of;
 
 /**
@@ -70,25 +70,28 @@ final readonly class CallMethod
      *
      * @throws InvalidDataException When Data object validation fails during parameter resolution
      *
-     * @return array|ResponseData The method result wrapped in a JSON-RPC response,
-     *                            or a raw array for unwrapped responses
+     * @return array<string, mixed>|ResponseData The method result wrapped in a JSON-RPC response,
+     *                                           or a raw array for unwrapped responses
      */
     public function handle(): array|ResponseData
     {
         try {
             $this->method->setRequest($this->requestObject);
+            $rawParams = $this->requestObject->getParam('data');
+            $params = is_array($rawParams) ? $rawParams : [];
 
+            /** @var array<string, mixed> $params */
             $result = App::call(
                 // @phpstan-ignore-next-line
                 [$this->method, 'handle'],
                 [
                     'requestObject' => $this->requestObject,
-                    ...$this->resolveParameters($this->method, (array) $this->requestObject->getParam('data')),
+                    ...$this->resolveParameters($this->method, $params),
                 ],
             );
 
             if ($this->method instanceof UnwrappedResponseInterface) {
-                /** @var array $result */
+                /** @var array<string, mixed> $result */
                 return $result;
             }
 
@@ -147,10 +150,19 @@ final readonly class CallMethod
 
             if (is_subclass_of((string) $parameterType, Data::class)) {
                 try {
-                    $parametersMapped[$parameterName] = call_user_func(
-                        [(string) $parameterType, 'createWithValidation'],
-                        $parameter->getName() === 'data' ? $params : $parameterValue,
-                    );
+                    $payload = $parameter->getName() === 'data' ? $params : $parameterValue;
+
+                    if (!is_array($payload)) {
+                        throw InvalidDataException::create(
+                            ValidationException::withMessages([
+                                $parameterName => ['The field must be an array.'],
+                            ]),
+                        );
+                    }
+
+                    /** @var array<string, mixed> $payload */
+                    /** @var class-string<Data> $parameterType */
+                    $parametersMapped[$parameterName] = $parameterType::createWithValidation($payload);
                 } catch (DataValidationException|ValidationException $exception) {
                     throw InvalidDataException::create($exception);
                 }

@@ -29,6 +29,7 @@ use Throwable;
 use function assert;
 use function class_exists;
 use function config;
+use function is_array;
 use function is_string;
 
 /**
@@ -131,7 +132,14 @@ final class ServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         try {
-            $configuration = ConfigurationData::createWithValidation((array) config('rpc'));
+            $configurationData = config('rpc');
+
+            if (!is_array($configurationData)) {
+                $configurationData = [];
+            }
+
+            /** @var array<string, mixed> $configurationData */
+            $configuration = ConfigurationData::createWithValidation($configurationData);
 
             foreach ($configuration->resources as $model => $resource) {
                 ResourceRepository::register($model, $resource);

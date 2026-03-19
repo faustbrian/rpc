@@ -17,12 +17,13 @@ use Cline\Struct\AbstractData as Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class CustomEntityData extends Data
 {
     public function __construct(
-        public readonly string $id,
-        public readonly string $type,
-        public readonly array $metadata,
+        public string $id,
+        public string $type,
+        public array $metadata,
     ) {}
 }

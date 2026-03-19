@@ -23,6 +23,7 @@ use Illuminate\Support\Str;
  *
  * @author Brian Faust <brian@cline.sh>
  * @see https://www.jsonrpc.org/specification#request_object
+ * @psalm-immutable
  */
 final readonly class RequestObjectData extends AbstractData
 {
@@ -43,10 +44,10 @@ final readonly class RequestObjectData extends AbstractData
      *                                           and may be null if the method requires no parameters.
      */
     public function __construct(
-        public readonly string $jsonrpc,
-        public readonly mixed $id,
-        public readonly string $method,
-        public readonly ?array $params = null,
+        public string $jsonrpc,
+        public mixed $id,
+        public string $method,
+        public ?array $params = null,
     ) {}
 
     /**

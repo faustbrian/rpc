@@ -9,8 +9,8 @@
 
 namespace Tests\Support\Fixtures;
 
-use Cline\Struct\Attributes\Validate;
 use Cline\Struct\AbstractData as Data;
+use Cline\Struct\Attributes\Validate;
 
 /**
  * Test fixture for Data object parameter testing.
@@ -18,14 +18,15 @@ use Cline\Struct\AbstractData as Data;
  *
  * @author Brian Faust <brian@cline.sh>
  * @internal
+ * @psalm-immutable
  */
 final readonly class ProductData extends Data
 {
     public function __construct(
         #[Validate('required')]
-        public readonly string $title,
+        public string $title,
         #[Validate(['required', 'min:0'])]
-        public readonly float $price,
-        public readonly ?string $description = null,
+        public float $price,
+        public ?string $description = null,
     ) {}
 }
