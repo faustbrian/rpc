@@ -52,7 +52,7 @@ interface MethodInterface
      * input structure, types, and validation rules for method invocation.
      * Used for request validation and API documentation generation.
      *
-     * @return array<int, mixed> Array of parameter content descriptors
+     * @return array<int, null|array<string, mixed>> Array of parameter content descriptors
      */
     public function getParams(): array;
 

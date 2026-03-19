@@ -21,11 +21,11 @@ namespace Cline\RPC\Contracts;
  *
  * @author Brian Faust <brian@cline.sh>
  *
- * @method static array<int, string> getFields()        Get available field definitions for sparse fieldsets
- * @method static array<int, string> getFilters()       Get available filter criteria for resource queries
- * @method static array<int, string> getRelationships() Get available relationships that can be included
- * @method static array<int, string> getSorts()         Get available sort parameters for ordering results
- * @method static string             getModel()         Get the fully qualified model class name
+ * @method static array<string, array<int, string>> getFields()        Get available field definitions for sparse fieldsets
+ * @method static array<string, array<int, string>> getFilters()       Get available filter criteria for resource queries
+ * @method static array<string, array<int, string>> getRelationships() Get available relationships that can be included
+ * @method static array<string, array<int, string>> getSorts()         Get available sort parameters for ordering results
+ * @method static string                            getModel()         Get the fully qualified model class name
  */
 interface ResourceInterface
 {

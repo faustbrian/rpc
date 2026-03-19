@@ -45,7 +45,7 @@ abstract class AbstractResource implements ResourceInterface
      * Override this method to specify which fields can be filtered and how.
      * Each filter should define the field name and filter type (exact, partial, etc.).
      *
-     * @return array<int, string> Array of allowed filter configurations
+     * @return array<string, array<int, string>> Array of allowed filter configurations grouped by context
      */
     public static function getFilters(): array
     {
@@ -59,7 +59,7 @@ abstract class AbstractResource implements ResourceInterface
      * Override this method to specify which relationships are allowed to be loaded.
      * This prevents unauthorized access to related data through the API.
      *
-     * @return array<int, string> Array of allowed relationship names
+     * @return array<string, array<int, string>> Array of allowed relationship names grouped by context
      */
     public static function getRelationships(): array
     {
@@ -73,7 +73,7 @@ abstract class AbstractResource implements ResourceInterface
      * Override this method to specify which fields can be used for sorting.
      * This prevents sorting on computed or sensitive fields that could impact performance.
      *
-     * @return array<int, string> Array of sortable field names
+     * @return array<string, array<int, string>> Array of sortable field names grouped by context
      */
     public static function getSorts(): array
     {

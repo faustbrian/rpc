@@ -52,7 +52,7 @@ abstract class AbstractListMethod extends AbstractMethod
      * Generates standard list endpoint parameters including pagination, field selection,
      * filters, relationship inclusion, and sorting based on the resource class configuration.
      *
-     * @return array<int, \Cline\OpenRpc\ContentDescriptor\ContentDescriptorInterface> Array of parameter descriptors
+     * @return array<int, null|array<string, mixed>> Array of parameter descriptors
      */
     #[Override()]
     public function getParams(): array

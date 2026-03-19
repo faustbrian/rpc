@@ -52,8 +52,9 @@ trait InteractsWithTransformer
      * Converts a collection of Eloquent models into a JSON API-compliant document
      * structure with field selection and relationship loading applied to all items.
      *
-     * @param  Collection<int, Model> $collection The collection of models to transform
-     * @return DocumentData           The JSON API document containing the transformed collection
+     * @template TModel of Model
+     * @param  Collection<int, TModel> $collection The collection of models to transform
+     * @return DocumentData            The JSON API document containing the transformed collection
      */
     protected function collection(Collection $collection): DocumentData
     {

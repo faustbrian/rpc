@@ -75,7 +75,7 @@ abstract class AbstractMethod implements MethodInterface
      * Returns an empty array by default. Override to define the method's
      * expected parameters with their schemas and constraints.
      *
-     * @return array<int, \Cline\OpenRpc\ContentDescriptor\ContentDescriptorInterface> Array of parameter descriptors
+     * @return array<int, null|array<string, mixed>> Array of parameter descriptors
      */
     #[Override()]
     public function getParams(): array
