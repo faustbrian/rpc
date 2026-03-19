@@ -21,6 +21,7 @@ use function class_exists;
 use function explode;
 use function is_object;
 use function is_string;
+use function is_subclass_of;
 use function resolve;
 use function serialize;
 use function spl_object_hash;
@@ -109,7 +110,7 @@ final class RulesTransformer
      */
     public static function transformDataObject(string $data, array $properties = []): array
     {
-        if (!class_exists($data)) {
+        if (!class_exists($data) || !is_subclass_of($data, AbstractData::class)) {
             throw new Error(sprintf(
                 'Class [%s] must exist and extend [%s].',
                 $data,
