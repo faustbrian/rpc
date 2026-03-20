@@ -52,6 +52,16 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cline\\RPC\\ServiceProvider"
+            ],
+            "aliases": {
+                "RPC": "Cline\\RPC\\Facades\\Server"
+            }
+        }
+    },
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
